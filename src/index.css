@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-size: 20px;
+}
+
+@layer components {
+  .view-text h1 {
+    @apply text-6xl font-bold my-2;
+  }
+  .view-text h2 {
+    @apply text-5xl font-bold my-2;
+  }
+  .view-text h3 {
+    @apply text-4xl font-bold my-2;
+  }
+  .view-text h4 {
+    @apply text-3xl font-bold my-2;
+  }
+  .view-text h5 {
+    @apply text-2xl font-bold my-2;
+  }
+  .view-text h6 {
+    @apply text-xl font-bold my-2;
+  }
+  .view-text ul {
+    @apply list-disc my-2 list-inside;
+  }
+  .view-text ol {
+    @apply list-decimal my-2 list-inside;
+  }
+  .view-text p {
+    @apply my-4;
+  }
+  .view-text code {
+    @apply text-rose-700 bg-rose-50 rounded p-1;
+  }
+  .view-text blockquote {
+    @apply border-l-8 border-slate-700 px-4 my-2;
+  }
+  .view-text a {
+    @apply underline text-blue-500;
+  }
+  .view-text pre {
+    @apply text-rose-700 bg-orange-50 border-2 rounded-md p-2;
+  }
+  .view-text pre code {
+    @apply bg-inherit border-none p-0;
+  }
+}
