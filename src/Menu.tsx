@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { IoIosSave, IoMdClose } from "react-icons/io";
 import { TbDownload } from "react-icons/tb";
 import { VscPin, VscPinned } from "react-icons/vsc";
+import { Link } from "react-router-dom";
 
 export const Menu = () => {
   const [isPinned, setIsPinned] = useState(
@@ -31,9 +32,9 @@ export const Menu = () => {
       <button onClick={() => setIsPinned((prev) => !prev)}>
         {isPinned ? <VscPinned /> : <VscPin />}
       </button>
-      <button>
+      <Link to="texts">
         <IoMdClose />
-      </button>
+      </Link>
     </div>
   );
 };
