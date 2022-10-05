@@ -6,16 +6,29 @@ import {
   setDoc,
   updateDoc,
 } from "firebase/firestore";
-import { call, SagaReturnType, takeEvery } from "redux-saga/effects";
+import {
+  call,
+  put,
+  SagaReturnType,
+  select,
+  takeEvery,
+} from "redux-saga/effects";
+import {
+  ActionIdContentPayload,
+  ActionIdPayload,
+  ActionUidPayload,
+} from "../types/textActionTypes";
 import { myFirestore } from "../app/firebase";
+import { rootState } from "../app/main";
 import { addTextError } from "../app/textsSlice";
+import { text } from "../types/textTypes";
 
-function* addTextSaga(action: PayloadAction<{ uid: string }>) {
+function* addTextSaga(action: ActionUidPayload) {
   try {
     const id = nanoid(10);
     yield setDoc(doc(myFirestore, "texts", id), {
       id,
-      uid: action.payload.uid,
+      uid: action.payload,
       createdAt: serverTimestamp(),
     });
   } catch (error) {
@@ -23,18 +36,21 @@ function* addTextSaga(action: PayloadAction<{ uid: string }>) {
   }
 }
 
-function* saveTextSaga(
-  action: PayloadAction<{ id: string; content: string; uid: string }>
-) {
-  const update: SagaReturnType<typeof updateDoc> = yield;
-  updateDoc(doc(myFirestore, "texts", action.payload.id), {
-    ...action.payload,
-    updatedAt: serverTimestamp(),
-  });
+function* saveTextSaga(action: ActionIdContentPayload) {
+  const getText = (state: rootState) =>
+    state.texts.texts.find((text) => text.id === action.payload.id);
+  const text: text | null = yield select(getText);
+  if (!text) throw Error("Invalid id");
+  yield text.content !== action.payload.content
+    ? updateDoc(doc(myFirestore, "texts", action.payload.id), {
+        content: action.payload.content,
+        updatedAt: serverTimestamp(),
+      })
+    : call(console.log, "no changes");
 }
 
-function* deleteTextSaga(action: PayloadAction<{ id: string }>) {
-  yield call(deleteDoc, doc(myFirestore, "texts", action.payload.id));
+function* deleteTextSaga(action: ActionIdPayload) {
+  yield call(deleteDoc, doc(myFirestore, "texts", action.payload));
 }
 
 export function* textsSaga() {

@@ -4,10 +4,12 @@ import { TbDownload } from "react-icons/tb";
 import { VscPin, VscPinned } from "react-icons/vsc";
 import { useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import { saveText } from "./app/textsSlice";
 import { uidSelector } from "./app/userSlice";
 
 export const Menu = ({ draft }: { draft: string }) => {
-  const { id } = useParams();
+  const params = useParams();
+  const id = params.id as string;
   const uid = uidSelector() as string;
   const [isPinned, setIsPinned] = useState(
     "isPinned" in localStorage
@@ -27,7 +29,7 @@ export const Menu = ({ draft }: { draft: string }) => {
       } sticky bottom-0 flex justify-center items-center gap-6 text-2xl p-2 border-t-2 border-black dark:border-gray-200 bg-white`}
     >
       <div className="flex items-center gap-2">
-        <button>
+        <button onClick={() => dispatch(saveText({ id, content: draft }))}>
           <IoIosSave />
         </button>
         <button>

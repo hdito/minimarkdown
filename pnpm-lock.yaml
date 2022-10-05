@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@reduxjs/toolkit': ^1.8.5
+  '@tailwindcss/line-clamp': ^0.4.2
   '@types/markdown-it': ^12.2.3
   '@types/react': ^18.0.17
   '@types/react-dom': ^18.0.6
@@ -28,6 +29,7 @@ dependencies:
 
 devDependencies:
   '@reduxjs/toolkit': 1.8.5_kuo2ie247izvzll3jejufdtq3q
+  '@tailwindcss/line-clamp': 0.4.2_tailwindcss@3.1.8
   '@types/markdown-it': 12.2.3
   '@types/react': 18.0.21
   '@types/react-dom': 18.0.6
@@ -1001,6 +1003,14 @@ packages:
   /@remix-run/router/1.0.1:
     resolution: {integrity: sha512-eBV5rvW4dRFOU1eajN7FmYxjAIVz/mRHgUE9En9mBn6m3mulK3WTR5C3iQhL9MZ14rWAq+xOlEaCkDiW0/heOg==}
     engines: {node: '>=14'}
+    dev: true
+
+  /@tailwindcss/line-clamp/0.4.2_tailwindcss@3.1.8:
+    resolution: {integrity: sha512-HFzAQuqYCjyy/SX9sLGB1lroPzmcnWv1FHkIpmypte10hptf4oPUfucryMKovZh2u0uiS9U5Ty3GghWfEJGwVw==}
+    peerDependencies:
+      tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
+    dependencies:
+      tailwindcss: 3.1.8_postcss@8.4.16
     dev: true
 
   /@types/hoist-non-react-statics/3.3.1:

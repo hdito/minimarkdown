@@ -1,4 +1,4 @@
-import { text } from "./../types/text";
+import { text } from "../types/textTypes";
 export const sortTexts = (text1: text, text2: text) => {
   if (text1.updatedAt) {
     if (text2.updatedAt) return text1.updatedAt - text2.updatedAt;

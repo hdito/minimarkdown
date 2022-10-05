@@ -4,8 +4,8 @@ import { useDispatch } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Editor } from "../Editor";
 import { Texts } from "../Texts";
-import { text } from "../types/text";
-import { textFromServer } from "../types/textFromServer";
+import { text } from "../types/textTypes";
+import { textFromServer } from "../types/textTypes";
 import { myFirestore } from "./firebase";
 import {
   addTextSuccess,
@@ -44,11 +44,7 @@ function App() {
               if (docSnap.updatedAt) {
                 newText.updatedAt = docSnap.updatedAt.toMillis();
               }
-              dispatch(
-                addTextSuccess({
-                  text: newText,
-                })
-              );
+              dispatch(addTextSuccess(newText));
             }
             if (change.type === "modified") {
               const docSnap = change.doc.data() as textFromServer;
@@ -63,14 +59,10 @@ function App() {
               if (docSnap.updatedAt) {
                 newText.updatedAt = docSnap.updatedAt.toMillis();
               }
-              dispatch(
-                modifyText({
-                  text: newText,
-                })
-              );
+              dispatch(modifyText(newText));
             }
             if (change.type === "removed") {
-              dispatch(deleteTextSuccess({ id: change.doc.data().id }));
+              dispatch(deleteTextSuccess(change.doc.data().id));
             }
           } catch (error) {
             console.log(error);
