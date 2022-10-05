@@ -1,0 +1,31 @@
+import parse from "html-react-parser";
+import Converter from "markdown-it";
+import { MdOutlineModeEditOutline } from "react-icons/md";
+
+export const Preview = ({
+  draft,
+  onShowEditor,
+}: {
+  draft: string;
+  onShowEditor: () => void;
+}) => {
+  const converter = new Converter({
+    typographer: true,
+    quotes: "«»„“",
+  });
+  const html = converter.render(draft);
+
+  return (
+    <>
+      <div className="view-text sm:px-[20%] px-8 py-4 flex-1 overflow-scroll">
+        {parse(html)}
+      </div>
+      <button
+        onClick={() => onShowEditor()}
+        className="text-2xl fixed right-[5%] top-1/2 -translate-y-1/2 -translate-x-1/2 opacity-20 hover:opacity-100 transition-all duration-150"
+      >
+        <MdOutlineModeEditOutline title="Edit" />
+      </button>
+    </>
+  );
+};
