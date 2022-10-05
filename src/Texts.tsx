@@ -3,64 +3,36 @@ import { intlFormatDistance, sub } from "date-fns";
 import { IoEyeOutline } from "react-icons/io5";
 import { MdOutlineModeEditOutline } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { ThemeSwitcher } from "./ThemeSwitcher";
+import { HiOutlinePlus, HiPlus } from "react-icons/hi";
+import { IoMdClose } from "react-icons/io";
+import { TextCard } from "./TextCard";
+import { useDispatch, useSelector } from "react-redux";
+import { rootState } from "./app/main";
+import { addText } from "./app/textsSlice";
 export const Texts = () => {
-  const [texts, setTexts] = useState([
-    {
-      id: "fdsaf",
-      content: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
-      createdAt: sub(Date.now(), { days: 5 }),
-      updatedAt: sub(Date.now(), { hours: 10 }),
-    },
-    {
-      id: "fdsfsdasdf",
-      content: "Expedita natus accusamus fugiat perspiciatis dolorem officia!",
-      createdAt: sub(Date.now(), { days: 1 }),
-      updatedAt: sub(Date.now(), { hours: 2 }),
-    },
-  ]);
+  const { texts } = useSelector((state: rootState) => state.texts);
+  const isLoading = useSelector((state: rootState) => state.texts.isLoading);
+  const dispatch = useDispatch();
+  const uid = useSelector((state: rootState) => state.user.uid);
   return (
-    <div className="px-4 py-2">
-      <h1 className="text-4xl font-bold mb-4 cursor-default">Texts</h1>
+    <div className="min-h-screen px-4 py-2 bg-white dark:bg-gray-800 text-black dark:text-gray-100">
+      <header className="flex justify-between">
+        <h1 className="text-4xl font-bold mb-4 cursor-default">
+          {!isLoading ? "Texts" : "Texts are being loaded"}
+        </h1>
+        <ThemeSwitcher />
+      </header>
       <div className="flex gap-4 flex-wrap">
+        <button
+          onClick={() => dispatch(addText({ uid: uid as string }))}
+          className="relative border-2 border-black dark:border-gray-100 max-w-[200px] w-full aspect-[3/4] rounded-md shadow-md hover:shadow-lg dark:shadow-none dark:hover:shadow-none flex flex-col justify-center items-center p-2"
+        >
+          <HiOutlinePlus className="text-4xl" />
+          Create new text
+        </button>
         {texts.map((text) => (
-          <div
-            className="group border-2 border-black max-w-[200px] rounded-md overflow-hidden shadow-md hover:shadow-lg flex flex-col"
-            key={text.id}
-          >
-            <p className="aspect-[4/3] relative leading-tight text-sm p-1 flex-1 overflow-hidden overflow-ellipsis">
-              {text.content}
-              <div className="group-hover:opacity-100 opacity-0 absolute w-full h-full flex left-0 top-0 transition-all duration-150 bg-white divide-x-2 divide-black">
-                <Link
-                  to={text.id}
-                  className="flex-1 flex flex-col justify-center items-center"
-                >
-                  <MdOutlineModeEditOutline className="text-2xl" title="Edit" />
-                  Edit
-                </Link>
-                <Link
-                  to={text.id}
-                  className="flex-1 flex flex-col justify-center items-center"
-                >
-                  <IoEyeOutline className="text-2xl" title="Preview" />
-                  Preview
-                </Link>
-              </div>
-            </p>
-            <div className="border-t-2 border-black px-2 py-1">
-              <p>
-                Created{" "}
-                <span className="italic">
-                  {intlFormatDistance(text.createdAt, Date.now())}
-                </span>
-              </p>
-              <p>
-                Updated{" "}
-                <span className="italic">
-                  {intlFormatDistance(text.updatedAt, Date.now())}
-                </span>
-              </p>
-            </div>
-          </div>
+          <TextCard key={text.id} text={text} />
         ))}
       </div>
     </div>

@@ -1,45 +1,27 @@
-import { useState } from "react";
+import parse from "html-react-parser";
 import Converter from "markdown-it";
-import { Link } from "react-router-dom";
-import { MdOutlineModeEditOutline, MdViewList } from "react-icons/md";
-import { TbDownload } from "react-icons/tb";
-import { VscPin } from "react-icons/vsc";
-import parse, { HTMLReactParserOptions, Element } from "html-react-parser";
-import { IoIosSave, IoMdClose } from "react-icons/io";
-import { ModeSwitcher } from "./ModeSwitcher";
-import { ThemeSwitcher } from "./ThemeSwitcher";
+import { useEffect, useState } from "react";
+import { IoEyeOutline } from "react-icons/io5";
+import { MdOutlineModeEditOutline } from "react-icons/md";
+import { useSelector } from "react-redux";
+import { useLocation, useParams } from "react-router-dom";
+import { rootState } from "./app/main";
 import { Menu } from "./Menu";
-import { IoArrowForward, IoEyeOutline } from "react-icons/io5";
+
 export const Editor = () => {
-  const [text, setText] = useState(`text 
-# h1 #
-### h3 ###
-###### h6 ######
-
-- First item
-- Second item
-- Third item
-
-1. First item
-2. Second item
-3. Third item
-
-text text 
-[link](https://www.example.com) **bold text** *italicized text*
-
-> blockquote
-
-text
-text
-text
-
-text`);
-  const [isEditMode, setIsEditMode] = useState(true);
+  const { id } = useParams();
+  const text = useSelector((state: rootState) =>
+    state.texts.texts.find((text) => text.id === id)
+  );
+  const [draft, setDraft] = useState(text?.content ?? "");
+  const { state } = useLocation();
+  const [isEditMode, setIsEditMode] = useState(state?.isEditMode ?? true);
+  useEffect(() => console.log(state));
   const converter = new Converter({
     typographer: true,
     quotes: "«»„“",
   });
-  const html = converter.render(text);
+  const html = converter.render(draft);
   return (
     <div className="text-gray-800 dark:text-gray-50 min-h-screen flex flex-col bg-white dark:bg-gray-800">
       {isEditMode ? (
@@ -48,8 +30,8 @@ text`);
             autoFocus
             className="w-full flex-1 resize-none px-8 sm:px-[20%] py-6 block focus-visible:outline-none bg-inherit text-inherit"
             spellCheck={false}
-            value={text}
-            onChange={(e) => setText(e.currentTarget.value)}
+            value={draft}
+            onChange={(e) => setDraft(e.currentTarget.value)}
             name=""
             id=""
           ></textarea>
@@ -73,7 +55,7 @@ text`);
           </button>
         </>
       )}
-      <Menu />
+      <Menu draft={draft} />
     </div>
   );
 };
