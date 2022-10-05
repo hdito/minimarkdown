@@ -77,7 +77,6 @@ function App() {
           }
         });
         dispatch(fetchSuccess());
-        console.log(snapshot.docChanges());
       },
       (error) => dispatch(fetchError(error))
     );

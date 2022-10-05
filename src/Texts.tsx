@@ -10,6 +10,7 @@ import { TextCard } from "./TextCard";
 import { useDispatch, useSelector } from "react-redux";
 import { rootState } from "./app/main";
 import { addText } from "./app/textsSlice";
+import { sortTexts } from "./utils/sortTexts";
 export const Texts = () => {
   const { texts } = useSelector((state: rootState) => state.texts);
   const isLoading = useSelector((state: rootState) => state.texts.isLoading);
@@ -31,9 +32,13 @@ export const Texts = () => {
           <HiOutlinePlus className="text-4xl" />
           Create new text
         </button>
-        {texts.map((text) => (
-          <TextCard key={text.id} text={text} />
-        ))}
+        {texts
+          .slice()
+          .sort(sortTexts)
+          .reverse()
+          .map((text) => (
+            <TextCard key={text.id} text={text} />
+          ))}
       </div>
     </div>
   );
