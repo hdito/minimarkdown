@@ -1,22 +1,22 @@
-import { useEffect, useState } from "react";
-import { MdOutlineLightMode, MdOutlineModeNight } from "react-icons/md";
+import { useEffect, useState } from 'react';
+import { MdOutlineLightMode, MdOutlineModeNight } from 'react-icons/md';
 
 export const ThemeSwitcher = ({ className }: { className?: string }) => {
   const [darkTheme, setDarkTheme] = useState(
-    localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("prefers-color-scheme: dark").matches)
+    localStorage.theme === 'dark' ||
+      (!('theme' in localStorage) &&
+        window.matchMedia('prefers-color-scheme: dark').matches)
       ? true
       : false
   );
   useEffect(() => {
     if (darkTheme) {
-      localStorage.setItem("theme", "dark");
-      document.documentElement.classList.add("dark");
+      localStorage.setItem('theme', 'dark');
+      document.documentElement.classList.add('dark');
       return;
     }
-    localStorage.setItem("theme", "light");
-    document.documentElement.classList.remove("dark");
+    localStorage.setItem('theme', 'light');
+    document.documentElement.classList.remove('dark');
   }, [darkTheme]);
   return (
     <button

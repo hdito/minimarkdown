@@ -1,12 +1,12 @@
-import { intlFormatDistance } from "date-fns";
-import { IoMdClose } from "react-icons/io";
-import { IoEyeOutline } from "react-icons/io5";
-import { MdOutlineModeEditOutline } from "react-icons/md";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { LoadingSpinner } from "./LoadingSpinner";
-import { text } from "./types/textTypes";
-import { deleteText } from "./app/textsSlice";
+import { intlFormatDistance } from 'date-fns';
+import { IoMdClose } from 'react-icons/io';
+import { IoEyeOutline } from 'react-icons/io5';
+import { MdOutlineModeEditOutline } from 'react-icons/md';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { LoadingSpinner } from './LoadingSpinner';
+import { text } from './types/textTypes';
+import { deleteText } from './app/textsSlice';
 
 export const TextCard = ({ text }: { text: text }) => {
   const dispatch = useDispatch();
@@ -41,7 +41,7 @@ export const TextCard = ({ text }: { text: text }) => {
             <div className="border-t-2 border-black dark:border-gray-200 px-2 py-1">
               {text?.updatedAt && (
                 <p>
-                  Updated{" "}
+                  Updated{' '}
                   <span className="italic">
                     {intlFormatDistance(new Date(text.updatedAt), Date.now())}
                   </span>
@@ -49,7 +49,7 @@ export const TextCard = ({ text }: { text: text }) => {
               )}
               {text.createdAt && (
                 <p>
-                  Created{" "}
+                  Created{' '}
                   <span className="italic">
                     {intlFormatDistance(new Date(text.createdAt), Date.now())}
                   </span>

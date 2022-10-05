@@ -1,6 +1,6 @@
-import parse from "html-react-parser";
-import Converter from "markdown-it";
-import { MdOutlineModeEditOutline } from "react-icons/md";
+import parse from 'html-react-parser';
+import Converter from 'markdown-it';
+import { MdOutlineModeEditOutline } from 'react-icons/md';
 
 export const Preview = ({
   draft,
@@ -11,7 +11,7 @@ export const Preview = ({
 }) => {
   const converter = new Converter({
     typographer: true,
-    quotes: "«»„“",
+    quotes: '«»„“',
   });
   const html = converter.render(draft);
 

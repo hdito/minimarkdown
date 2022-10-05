@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react";
-import { IoEyeOutline } from "react-icons/io5";
-import { MdOutlineModeEditOutline } from "react-icons/md";
-import { useSelector } from "react-redux";
-import { useLocation, useParams } from "react-router-dom";
-import { rootState } from "./app/main";
-import { EditMode } from "./EditMode";
-import { Menu } from "./Menu";
-import { Preview } from "./Preview";
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useLocation, useParams } from 'react-router-dom';
+import { rootState } from './app/main';
+import { EditMode } from './EditMode';
+import { Menu } from './Menu';
+import { Preview } from './Preview';
 
 export const Editor = () => {
   const { id } = useParams();
@@ -14,7 +12,7 @@ export const Editor = () => {
     state.texts.texts.find((text) => text.id === id)
   );
   const { state } = useLocation();
-  const [draft, setDraft] = useState(text?.content ?? "");
+  const [draft, setDraft] = useState(text?.content ?? '');
   const [isEditMode, setIsEditMode] = useState(state?.isEditMode ?? true);
   return (
     <div className="text-gray-800 dark:text-gray-50 min-h-screen flex flex-col bg-white dark:bg-gray-800">

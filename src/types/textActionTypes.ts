@@ -1,5 +1,5 @@
-import { PayloadAction } from "@reduxjs/toolkit";
-import { text } from "./textTypes";
+import { PayloadAction } from '@reduxjs/toolkit';
+import { text } from './textTypes';
 
 export type ActionIdPayload = PayloadAction<string>;
 export type ActionUidPayload = PayloadAction<string>;

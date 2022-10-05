@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { useSelector } from "react-redux";
-import { rootState } from "./main";
-import { ActionErrorPayload, ActionUidPayload } from "../types/userActionTypes";
+import { createSlice } from '@reduxjs/toolkit';
+import { useSelector } from 'react-redux';
+import { rootState } from './main';
+import { ActionErrorPayload, ActionUidPayload } from '../types/userActionTypes';
 
 type initialState = {
   uid: string | null;
@@ -12,7 +12,7 @@ type initialState = {
 const initialState: initialState = { uid: null, isLoading: false, error: null };
 
 export const userSlice = createSlice({
-  name: "user",
+  name: 'user',
   initialState,
   reducers: {
     signedIn: (state, action: ActionUidPayload) => {

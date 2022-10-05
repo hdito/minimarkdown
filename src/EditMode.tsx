@@ -1,5 +1,5 @@
-import { ChangeEventHandler } from "react";
-import { IoEyeOutline } from "react-icons/io5";
+import { ChangeEventHandler } from 'react';
+import { IoEyeOutline } from 'react-icons/io5';
 
 export const EditMode = ({
   draft,

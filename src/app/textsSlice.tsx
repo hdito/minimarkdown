@@ -1,13 +1,10 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { text } from "../types/textTypes";
-import { rootState } from "./main";
+import { createAction, createSlice } from '@reduxjs/toolkit';
 import {
   ActionErrorPayload,
-  ActionTextPayload,
   ActionIdPayload,
-  ActionUidPayload,
-  ActionIdContentPayload,
-} from "../types/textActionTypes";
+  ActionTextPayload,
+} from '../types/textActionTypes';
+import { text } from '../types/textTypes';
 
 type initialState = {
   texts: text[];
@@ -18,7 +15,7 @@ type initialState = {
 const initialState: initialState = { texts: [], isLoading: false, error: null };
 
 export const textsSlice = createSlice({
-  name: "texts",
+  name: 'texts',
   initialState,
   reducers: {
     deleteTextFail: (state, action: ActionErrorPayload) => {
@@ -61,8 +58,6 @@ export const textsSlice = createSlice({
       );
       state.texts[indexToModify] = { ...action.payload };
     },
-    addText: (state, action: ActionUidPayload) => {},
-    saveText: (state, action: ActionIdContentPayload) => {},
   },
 });
 
@@ -71,13 +66,16 @@ export const {
   deleteTextSuccess,
   deleteTextFail,
   modifyText,
-  addText,
   addTextSuccess,
   addTextError,
   fetchError,
   fetchSuccess,
   fetchTexts,
-  saveText,
 } = textsSlice.actions;
+
+export const saveText = createAction<{ id: string; content: string }>(
+  'texts/saveText'
+);
+export const addText = createAction<string>('texts/addText');
 
 export default textsSlice.reducer;

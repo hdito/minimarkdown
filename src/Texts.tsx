@@ -1,16 +1,10 @@
-import { useState } from "react";
-import { intlFormatDistance, sub } from "date-fns";
-import { IoEyeOutline } from "react-icons/io5";
-import { MdOutlineModeEditOutline } from "react-icons/md";
-import { Link } from "react-router-dom";
-import { ThemeSwitcher } from "./ThemeSwitcher";
-import { HiOutlinePlus, HiPlus } from "react-icons/hi";
-import { IoMdClose } from "react-icons/io";
-import { TextCard } from "./TextCard";
-import { useDispatch, useSelector } from "react-redux";
-import { rootState } from "./app/main";
-import { addText } from "./app/textsSlice";
-import { sortTexts } from "./utils/sortTexts";
+import { HiOutlinePlus } from 'react-icons/hi';
+import { useDispatch, useSelector } from 'react-redux';
+import { rootState } from './app/main';
+import { addText } from './app/textsSlice';
+import { TextCard } from './TextCard';
+import { ThemeSwitcher } from './ThemeSwitcher';
+import { sortTexts } from './utils/sortTexts';
 export const Texts = () => {
   const { texts } = useSelector((state: rootState) => state.texts);
   const isLoading = useSelector((state: rootState) => state.texts.isLoading);
@@ -20,7 +14,7 @@ export const Texts = () => {
     <div className="min-h-screen px-4 py-2 bg-white dark:bg-gray-800 text-black dark:text-gray-100">
       <header className="flex justify-between">
         <h1 className="text-4xl font-bold mb-4 cursor-default">
-          {!isLoading ? "Texts" : "Texts are being loaded"}
+          {!isLoading ? 'Texts' : 'Texts are being loaded'}
         </h1>
         <ThemeSwitcher />
       </header>

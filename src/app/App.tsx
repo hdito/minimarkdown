@@ -1,12 +1,11 @@
-import { collection, onSnapshot, query, where } from "firebase/firestore";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { Navigate, Route, Routes } from "react-router-dom";
-import { Editor } from "../Editor";
-import { Texts } from "../Texts";
-import { text } from "../types/textTypes";
-import { textFromServer } from "../types/textTypes";
-import { myFirestore } from "./firebase";
+import { collection, onSnapshot, query, where } from 'firebase/firestore';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { Editor } from '../Editor';
+import { Texts } from '../Texts';
+import { text, textFromServer } from '../types/textTypes';
+import { myFirestore } from './firebase';
 import {
   addTextSuccess,
   deleteTextSuccess,
@@ -14,24 +13,24 @@ import {
   fetchSuccess,
   fetchTexts,
   modifyText,
-} from "./textsSlice";
-import { signIn, uidSelector } from "./userSlice";
+} from './textsSlice';
+import { signIn, uidSelector } from './userSlice';
 
-function App() {
+function App(): JSX.Element {
   const dispatch = useDispatch();
   const uid = uidSelector();
   useEffect(() => {
     dispatch(signIn());
   }, []);
   useEffect(() => {
-    if (!uid) return;
+    if (uid === null) return;
     dispatch(fetchTexts());
     onSnapshot(
-      query(collection(myFirestore, "texts"), where("uid", "==", uid)),
+      query(collection(myFirestore, 'texts'), where('uid', '==', uid)),
       (snapshot) => {
         snapshot.docChanges().forEach((change) => {
           try {
-            if (change.type === "added") {
+            if (change.type === 'added') {
               const docSnap = change.doc.data() as textFromServer;
               const { id, uid, content } = docSnap;
               const newText: text = {
@@ -46,7 +45,7 @@ function App() {
               }
               dispatch(addTextSuccess(newText));
             }
-            if (change.type === "modified") {
+            if (change.type === 'modified') {
               const docSnap = change.doc.data() as textFromServer;
               const { id, uid, content } = docSnap;
               const newText: text = {
@@ -61,7 +60,7 @@ function App() {
               }
               dispatch(modifyText(newText));
             }
-            if (change.type === "removed") {
+            if (change.type === 'removed') {
               dispatch(deleteTextSuccess(change.doc.data().id));
             }
           } catch (error) {
@@ -75,7 +74,7 @@ function App() {
   }, [uid]);
   return (
     <>
-      {uid && (
+      {uid !== null && (
         <Routes>
           <Route path="/" element={<Navigate to="texts" />} />
           <Route path="texts">

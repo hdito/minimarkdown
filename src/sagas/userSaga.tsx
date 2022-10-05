@@ -1,7 +1,7 @@
-import { signInAnonymously, UserCredential } from "firebase/auth";
-import { call, put, takeEvery } from "redux-saga/effects";
-import { myAuth } from "../app/firebase";
-import { signedIn, signInFailed } from "../app/userSlice";
+import { signInAnonymously, UserCredential } from 'firebase/auth';
+import { call, put, takeEvery } from 'redux-saga/effects';
+import { myAuth } from '../app/firebase';
+import { signedIn, signInFailed } from '../app/userSlice';
 
 export function* signIn() {
   try {
@@ -14,5 +14,5 @@ export function* signIn() {
 }
 
 export function* userSaga() {
-  yield takeEvery("user/signIn", signIn);
+  yield takeEvery('user/signIn', signIn);
 }
