@@ -5,12 +5,12 @@ import { rootState } from './app/main';
 import { EditMode } from './EditMode';
 import { Menu } from './Menu';
 import { Preview } from './Preview';
+import { SaveMessage } from './SaveMessage';
 
 export const Editor = () => {
-  const { id } = useParams();
-  const text = useSelector((state: rootState) =>
-    state.texts.texts.find((text) => text.id === id)
-  );
+  const params = useParams();
+  const id = params.id as string;
+  const text = useSelector((state: rootState) => state.texts.texts[id]);
   const { state } = useLocation();
   const [draft, setDraft] = useState(text?.content ?? '');
   const [isEditMode, setIsEditMode] = useState(state?.isEditMode ?? true);
@@ -26,6 +26,7 @@ export const Editor = () => {
         <Preview draft={draft} onShowEditor={() => setIsEditMode(true)} />
       )}
       <Menu draft={draft} />
+      <SaveMessage />
     </div>
   );
 };

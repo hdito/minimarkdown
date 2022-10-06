@@ -38,7 +38,7 @@ html {
     @apply text-rose-700 bg-rose-50 rounded p-1;
   }
   .view-text blockquote {
-    @apply border-l-8 border-slate-700 px-4 my-2;
+    @apply border-l-8 border-slate-700 px-4 my-2 dark:border-orange-500;
   }
   .view-text a {
     @apply underline text-blue-500;

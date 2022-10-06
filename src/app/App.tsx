@@ -1,6 +1,6 @@
 import { collection, onSnapshot, query, where } from 'firebase/firestore';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Editor } from '../Editor';
 import { Texts } from '../Texts';
@@ -14,11 +14,11 @@ import {
   fetchTexts,
   modifyText,
 } from './textsSlice';
-import { signIn, uidSelector } from './userSlice';
+import { selectUid, signIn } from './userSlice';
 
 function App(): JSX.Element {
   const dispatch = useDispatch();
-  const uid = uidSelector();
+  const uid = useSelector(selectUid());
   useEffect(() => {
     dispatch(signIn());
   }, []);

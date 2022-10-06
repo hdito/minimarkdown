@@ -1,21 +1,28 @@
 import { HiOutlinePlus } from 'react-icons/hi';
 import { useDispatch, useSelector } from 'react-redux';
 import { rootState } from './app/main';
-import { addText } from './app/textsSlice';
+import { addText, selectTextsArray } from './app/textsSlice';
+import { selectUid } from './app/userSlice';
 import { TextCard } from './TextCard';
 import { ThemeSwitcher } from './ThemeSwitcher';
 import { sortTexts } from './utils/sortTexts';
+import { ErrorTextsMessage } from './ErrorTextsMessage';
+import { IoHelpCircleOutline } from 'react-icons/io5';
+
 export const Texts = () => {
-  const { texts } = useSelector((state: rootState) => state.texts);
+  const texts = useSelector(selectTextsArray());
   const isLoading = useSelector((state: rootState) => state.texts.isLoading);
   const dispatch = useDispatch();
-  const uid = useSelector((state: rootState) => state.user.uid);
+  const uid = useSelector(selectUid());
   return (
     <div className="min-h-screen px-4 py-2 bg-white dark:bg-gray-800 text-black dark:text-gray-100">
-      <header className="flex justify-between">
-        <h1 className="text-4xl font-bold mb-4 cursor-default">
+      <header className="flex items-center gap-4">
+        <h1 className="text-4xl font-bold mb-4 mr-auto cursor-default">
           {!isLoading ? 'Texts' : 'Texts are being loaded'}
         </h1>
+        <button className="text-2xl">
+          <IoHelpCircleOutline />
+        </button>
         <ThemeSwitcher />
       </header>
       <div className="flex gap-4 flex-wrap">
@@ -34,6 +41,7 @@ export const Texts = () => {
             <TextCard key={text.id} text={text} />
           ))}
       </div>
+      <ErrorTextsMessage />
     </div>
   );
 };

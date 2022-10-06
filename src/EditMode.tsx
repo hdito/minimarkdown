@@ -1,6 +1,5 @@
 import { ChangeEventHandler } from 'react';
 import { IoEyeOutline } from 'react-icons/io5';
-import { SaveMessage } from './SaveMessage';
 
 export const EditMode = ({
   draft,
@@ -28,7 +27,6 @@ export const EditMode = ({
       >
         <IoEyeOutline title="Preview" />
       </button>
-      <SaveMessage />
     </>
   );
 };

@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { useSelector } from 'react-redux';
-import { rootState } from './main';
 import { ActionErrorPayload, ActionUidPayload } from '../types/userActionTypes';
+import { rootState } from './main';
 
 type initialState = {
   uid: string | null;
@@ -33,7 +32,6 @@ export const userSlice = createSlice({
 
 export default userSlice.reducer;
 
-export const uidSelector = () =>
-  useSelector((state: rootState) => state.user.uid);
+export const selectUid = () => (state: rootState) => state.user.uid;
 
 export const { signIn, signInFailed, signedIn } = userSlice.actions;

@@ -5,14 +5,15 @@ import {
   ActionTextPayload,
 } from '../types/textActionTypes';
 import { text } from '../types/textTypes';
+import { rootState } from './main';
 
 type initialState = {
-  texts: text[];
+  texts: { [key: string]: text };
   isLoading: boolean;
   error: unknown | null;
 };
 
-const initialState: initialState = { texts: [], isLoading: false, error: null };
+const initialState: initialState = { texts: {}, isLoading: false, error: null };
 
 export const textsSlice = createSlice({
   name: 'texts',
@@ -37,56 +38,40 @@ export const textsSlice = createSlice({
       state.error = action.payload;
     },
     addTextSuccess: (state, action: ActionTextPayload) => {
-      state.texts.push({ ...action.payload });
+      state.texts[action.payload.id] = { ...action.payload };
     },
     deleteText: (state, action: ActionIdPayload) => {
-      const textToDelete = state.texts.find(
-        (text) => text.id === action.payload
-      );
-      if (!textToDelete) return;
-      textToDelete.isDeleted = true;
+      state.texts[action.payload].isDeleted = true;
     },
     deleteTextSuccess: (state, action: ActionIdPayload) => {
-      const indexToDelete = state.texts.findIndex(
-        (text) => text.id === action.payload
-      );
-      state.texts.splice(indexToDelete, 1);
+      delete state.texts[action.payload];
     },
     modifyText: (state, action: ActionTextPayload) => {
-      const indexToModify = state.texts.findIndex(
-        (text) => text.id === action.payload.id
-      );
-
-      state.texts[indexToModify] = {
-        ...state.texts[indexToModify],
+      state.texts[action.payload.id] = {
+        ...state.texts[action.payload.id],
         ...action.payload,
       };
     },
     saveTextSuccess: (state, action: ActionIdPayload) => {
-      const text = state.texts.find(
-        (text) => text.id === action.payload
-      ) as text;
-      text.save = true;
+      state.texts[action.payload].save = true;
     },
     saveTextError: (
       state,
       action: PayloadAction<{ id: string; error: unknown }>
     ) => {
-      const text = state.texts.find(
-        (text) => text.id === action.payload.id
-      ) as text;
-      text.save = action.payload.error;
+      state.texts[action.payload.id].save = action.payload.error;
     },
     clearSaveData: (state, action: PayloadAction<string>) => {
-      const text = state.texts.find(
-        (text) => text.id === action.payload
-      ) as text;
-      text.save = null;
+      state.texts[action.payload].save = null;
+    },
+    clearError: (state) => {
+      state.error = null;
     },
   },
 });
 
 export const {
+  clearError,
   saveTextSuccess,
   saveTextError,
   clearSaveData,
@@ -107,3 +92,9 @@ export const saveText = createAction<{ id: string; content: string }>(
 export const addText = createAction<string>('texts/addText');
 
 export default textsSlice.reducer;
+
+export const selectTextsArray = () => (state: rootState) =>
+  Object.keys(state.texts.texts).map((textKey) => state.texts.texts[textKey]);
+
+export const selectText = (id: string) => (state: rootState) =>
+  state.texts.texts[id];
