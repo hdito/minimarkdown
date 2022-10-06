@@ -9,6 +9,7 @@ export interface text {
   error?: Error;
   isDeleted?: boolean;
   isLocal?: boolean;
+  save?: true | unknown | null;
 }
 
 export interface textFromServer {

@@ -1,4 +1,4 @@
-import { createAction, createSlice } from '@reduxjs/toolkit';
+import { createAction, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
   ActionErrorPayload,
   ActionIdPayload,
@@ -56,12 +56,40 @@ export const textsSlice = createSlice({
       const indexToModify = state.texts.findIndex(
         (text) => text.id === action.payload.id
       );
-      state.texts[indexToModify] = { ...action.payload };
+
+      state.texts[indexToModify] = {
+        ...state.texts[indexToModify],
+        ...action.payload,
+      };
+    },
+    saveTextSuccess: (state, action: ActionIdPayload) => {
+      const text = state.texts.find(
+        (text) => text.id === action.payload
+      ) as text;
+      text.save = true;
+    },
+    saveTextError: (
+      state,
+      action: PayloadAction<{ id: string; error: unknown }>
+    ) => {
+      const text = state.texts.find(
+        (text) => text.id === action.payload.id
+      ) as text;
+      text.save = action.payload.error;
+    },
+    clearSaveData: (state, action: PayloadAction<string>) => {
+      const text = state.texts.find(
+        (text) => text.id === action.payload
+      ) as text;
+      text.save = null;
     },
   },
 });
 
 export const {
+  saveTextSuccess,
+  saveTextError,
+  clearSaveData,
   deleteText,
   deleteTextSuccess,
   deleteTextFail,

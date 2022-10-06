@@ -6,16 +6,18 @@ import {
   setDoc,
   updateDoc,
 } from 'firebase/firestore';
-import { call, select, takeEvery } from 'redux-saga/effects';
+import { call, put, takeEvery } from 'redux-saga/effects';
 import { myFirestore } from '../app/firebase';
-import { rootState } from '../app/main';
-import { addTextError } from '../app/textsSlice';
+import {
+  addTextError,
+  saveTextError,
+  saveTextSuccess,
+} from '../app/textsSlice';
 import {
   ActionIdContentPayload,
   ActionIdPayload,
   ActionUidPayload,
 } from '../types/textActionTypes';
-import { text } from '../types/textTypes';
 
 function* addTextSaga(action: ActionUidPayload) {
   try {
@@ -31,16 +33,15 @@ function* addTextSaga(action: ActionUidPayload) {
 }
 
 function* saveTextSaga(action: ActionIdContentPayload) {
-  const getText = (state: rootState) =>
-    state.texts.texts.find((text) => text.id === action.payload.id);
-  const text: text | null = yield select(getText);
-  if (!text) throw Error('Invalid id');
-  yield text.content !== action.payload.content
-    ? updateDoc(doc(myFirestore, 'texts', action.payload.id), {
-        content: action.payload.content,
-        updatedAt: serverTimestamp(),
-      })
-    : call(console.log, 'no changes');
+  try {
+    yield updateDoc(doc(myFirestore, 'texts', action.payload.id), {
+      content: action.payload.content,
+      updatedAt: serverTimestamp(),
+    });
+    yield put(saveTextSuccess(action.payload.id));
+  } catch (error) {
+    yield put(saveTextError({ id: action.payload.id, error }));
+  }
 }
 
 function* deleteTextSaga(action: ActionIdPayload) {
