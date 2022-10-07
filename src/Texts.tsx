@@ -29,9 +29,9 @@ export const Texts = () => {
       <div className="flex gap-4 flex-wrap">
         <button
           onClick={() => dispatch(addText(uid as string))}
-          className="relative flex flex-col justify-center items-center p-2 h-[250px] border-2 border-black dark:border-gray-100 rounded-md shadow-md hover:shadow-lg dark:shadow-none dark:hover:shadow-none"
+          className="relative flex gap-2 sm:gap-1 sm:flex-col justify-center items-center p-2 sm:h-[250px] border-2 border-black dark:border-gray-100 rounded-md shadow-md hover:shadow-lg dark:shadow-none dark:hover:shadow-none"
         >
-          <HiOutlinePlus className="text-4xl" />
+          <HiOutlinePlus className="text-xl sm:text-4xl" />
           Create new text
         </button>
         {texts
