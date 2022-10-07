@@ -32,9 +32,6 @@ export const Menu = ({ draft }: { draft: string }) => {
         <button onClick={() => dispatch(saveText({ id, content: draft }))}>
           <BiSave />
         </button>
-        <button>
-          <TbDownload />
-        </button>
       </div>
       <button onClick={() => setIsPinned((prev) => !prev)}>
         {isPinned ? <TbPinned /> : <TbPin />}

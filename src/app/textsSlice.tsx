@@ -13,7 +13,7 @@ type initialState = {
   error: unknown | null;
 };
 
-const initialState: initialState = { texts: {}, isLoading: false, error: null };
+const initialState: initialState = { texts: {}, isLoading: true, error: null };
 
 export const textsSlice = createSlice({
   name: 'texts',
@@ -62,7 +62,11 @@ export const textsSlice = createSlice({
       state.texts[action.payload.id].save = action.payload.error;
     },
     clearSaveData: (state, action: PayloadAction<string>) => {
-      state.texts[action.payload].save = null;
+      console.dir(action.payload);
+      const text = state.texts[action.payload];
+      console.dir(state.texts);
+      console.dir(text);
+      if (text.save) text.save = null;
     },
     clearError: (state) => {
       state.error = null;
