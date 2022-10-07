@@ -8,7 +8,8 @@ export const SaveMessage = () => {
   const params = useParams();
   const id = params.id as string;
 
-  const saveData = useSelector(selectText(id)).save as true | unknown | null;
+  const text = useSelector(selectText(id));
+  const saveData = text?.save;
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(clearSaveData(id));
