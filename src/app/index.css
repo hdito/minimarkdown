@@ -35,18 +35,21 @@ html {
     @apply my-4;
   }
   .view-text code {
-    @apply text-rose-700 bg-rose-50 rounded p-1;
+    @apply text-gray-700 dark:text-gray-100 bg-teal-100 dark:bg-teal-700 rounded p-1 border-black dark:border-gray-100 border-2;
   }
   .view-text blockquote {
-    @apply border-l-8 border-slate-700 px-4 my-2 dark:border-orange-500;
+    @apply border-l-8 border-orange-700 px-4 my-2 dark:border-orange-500;
   }
   .view-text a {
     @apply underline text-blue-500;
   }
   .view-text pre {
-    @apply text-rose-700 bg-orange-50 border-2 rounded-md p-2;
+    @apply p-1 text-gray-700 dark:text-gray-100 bg-sky-100 dark:bg-sky-700 border-2 border-black dark:border-gray-100 rounded-md;
   }
   .view-text pre code {
-    @apply bg-inherit border-none p-0;
+    @apply bg-transparent dark:bg-transparent border-0 p-0;
+  }
+  :focus-visible {
+    @apply outline-8 outline-sky-400 dark:outline-sky-200;
   }
 }
