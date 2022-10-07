@@ -27,7 +27,7 @@ export const SaveMessage = () => {
               : 'border-red-700 text-red-700 dark:border-red-400 dark:text-red-400'
           }`}
         >
-          {saveData ? 'Saved successfully' : 'Error on save'}{' '}
+          {saveData === true ? 'Saved successfully' : 'Error on save'}{' '}
           <button
             className="text-2xl"
             onClick={() => dispatch(clearSaveData(id))}
