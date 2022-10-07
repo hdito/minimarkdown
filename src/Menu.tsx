@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import { IoMdClose } from 'react-icons/io';
 import { BiSave } from 'react-icons/bi';
-import { TbDownload } from 'react-icons/tb';
+import { IoMdClose } from 'react-icons/io';
 import { TbPin, TbPinned } from 'react-icons/tb';
 import { useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
