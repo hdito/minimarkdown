@@ -8,6 +8,7 @@ import { ThemeSwitcher } from './ThemeSwitcher';
 import { sortTexts } from './utils/sortTexts';
 import { ErrorTextsMessage } from './ErrorTextsMessage';
 import { IoHelpCircleOutline } from 'react-icons/io5';
+import { Link } from 'react-router-dom';
 
 export const Texts = () => {
   const texts = useSelector(selectTextsArray());
@@ -20,9 +21,9 @@ export const Texts = () => {
         <h1 className="text-4xl font-bold mb-4 mr-auto cursor-default">
           {!isLoading ? 'Texts' : 'Texts are being loaded'}
         </h1>
-        <button className="text-2xl">
+        <Link to="/help" className="text-2xl">
           <IoHelpCircleOutline />
-        </button>
+        </Link>
         <ThemeSwitcher />
       </header>
       <div className="flex gap-4 flex-wrap">

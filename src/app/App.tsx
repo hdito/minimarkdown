@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Editor } from '../Editor';
+import { Help } from '../Help';
 import { Texts } from '../Texts';
 import { text, textFromServer } from '../types/textTypes';
 import { myFirestore } from './firebase';
@@ -81,6 +82,7 @@ function App(): JSX.Element {
             <Route index element={<Texts />} />
             <Route path=":id" element={<Editor />} />
           </Route>
+          <Route path="help" element={<Help />} />
         </Routes>
       )}
     </>
