@@ -96,7 +96,7 @@ export const Help = () => {
             block <br />
             ```
           </p>
-          <div className="px-4 py-1">
+          <div className="px-4 py-2">
             <pre className="p-1 text-gray-700 dark:text-gray-100 bg-sky-100 dark:bg-sky-700 border-2 border-black dark:border-gray-100 rounded-md">
               <code>
                 code <br />
@@ -123,10 +123,12 @@ export const Help = () => {
             ![Juicy
             tomatoes](https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Tomato_je.jpg/220px-Tomato_je.jpg)
           </p>
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Tomato_je.jpg/220px-Tomato_je.jpg"
-            alt="Juicy tomatoes"
-          />
+          <p className="px-4 py-2">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Tomato_je.jpg/220px-Tomato_je.jpg"
+              alt="Juicy tomatoes"
+            />
+          </p>
         </section>
       </main>
     </div>

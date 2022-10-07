@@ -22,7 +22,7 @@ export const Preview = ({
       </div>
       <button
         onClick={() => onShowEditor()}
-        className="text-2xl fixed right-[5%] top-1/2 -translate-y-1/2 translate-x-1/2 opacity-20 hover:opacity-100 transition-all duration-150"
+        className="text-2xl fixed right-4 sm:right-[10%] top-1/2 -translate-y-1/2 translate-x-1/2 opacity-20 hover:opacity-100 transition-all duration-150"
       >
         <MdOutlineModeEditOutline title="Edit" />
       </button>
