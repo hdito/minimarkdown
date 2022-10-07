@@ -11,7 +11,7 @@ import { deleteText } from './app/textsSlice';
 export const TextCard = ({ text }: { text: text }) => {
   const dispatch = useDispatch();
   return (
-    <div className="relative border-2 aspect-[5/3] sm:aspect-square border-black dark:border-gray-100 sm:max-w-[250px] w-full rounded-md shadow-md dark:shadow-md dark:shadow-gray-600 dark:hover:shadow-gray-600 dark:hover:shadow-lg hover:shadow-lg flex flex-col transition-all duration-150">
+    <div className="relative border-2 aspect-[5/3] sm:aspect-square border-black dark:border-gray-100 sm:max-w-[250px] w-full rounded-md shadow-md dark:shadow-none dark:hover:shadow-none hover:shadow-lg flex flex-col transition-all duration-150">
       {!text.isLocal ? (
         <>
           <div className="flex-1 flex flex-col group relative">
@@ -44,17 +44,17 @@ export const TextCard = ({ text }: { text: text }) => {
               {text?.updatedAt && (
                 <p>
                   Updated{' '}
-                  <span className="italic">
+                  <em>
                     {intlFormatDistance(new Date(text.updatedAt), Date.now())}
-                  </span>
+                  </em>
                 </p>
               )}
               {text.createdAt && (
                 <p>
                   Created{' '}
-                  <span className="italic">
+                  <em>
                     {intlFormatDistance(new Date(text.createdAt), Date.now())}
-                  </span>
+                  </em>
                 </p>
               )}
             </div>
