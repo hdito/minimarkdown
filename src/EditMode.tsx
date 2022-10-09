@@ -1,4 +1,5 @@
 import { ChangeEventHandler } from 'react';
+import { useTranslation } from 'react-i18next';
 import { IoEyeOutline } from 'react-icons/io5';
 
 export const EditMode = ({
@@ -10,6 +11,7 @@ export const EditMode = ({
   onChange: ChangeEventHandler<HTMLTextAreaElement>;
   onShowPreview: () => void;
 }) => {
+  const { t } = useTranslation();
   return (
     <>
       <textarea
@@ -25,7 +27,7 @@ export const EditMode = ({
         onClick={() => onShowPreview()}
         className="text-2xl fixed right-4 sm:right-[10%] top-1/2 -translate-y-1/2 translate-x-1/2 opacity-20 hover:opacity-100 transition-all duration-150"
       >
-        <IoEyeOutline title="Preview" />
+        <IoEyeOutline title={t('preview')} />
       </button>
     </>
   );

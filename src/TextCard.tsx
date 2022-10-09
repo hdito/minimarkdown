@@ -7,15 +7,17 @@ import { Link } from 'react-router-dom';
 import { LoadingSpinner } from './LoadingSpinner';
 import { text } from './types/textTypes';
 import { deleteText } from './app/textsSlice';
+import { useTranslation } from 'react-i18next';
 
 export const TextCard = ({ text }: { text: text }) => {
   const dispatch = useDispatch();
+  const { t, i18n } = useTranslation();
   return (
-    <div className="relative border-2 aspect-[5/3] sm:aspect-square border-black dark:border-gray-100 sm:max-w-[250px] w-full rounded-md shadow-md dark:shadow-none dark:hover:shadow-none hover:shadow-lg flex flex-col transition-all duration-150">
+    <div className="relative border-2 h-[240px] sm:max-w-[300px] w-full border-black dark:border-gray-100 rounded-md shadow-md dark:shadow-none dark:hover:shadow-none hover:shadow-lg flex flex-col transition-all duration-150">
       {!text.isLocal ? (
         <>
           <div className="flex-1 flex flex-col group relative">
-            <div className="flex-1 p-1 border-b-2 sm:border-b-0 border-black dark:border-gray-100 sm:border-0 whitespace-pre-wrap break-all">
+            <div className="flex-1 p-1 border-b-2 sm:border-b-0 border-black dark:border-gray-100 sm:border-0 whitespace-pre-wrap break-words">
               <div className="leading-tight line-clamp-3 sm:line-clamp-[7] text-sm">
                 {text.content}
               </div>
@@ -24,36 +26,40 @@ export const TextCard = ({ text }: { text: text }) => {
               <Link
                 to={text.id}
                 state={{ isEditMode: true }}
-                className="p-1 flex-1 flex gap-2 sm:gap-0 sm:flex-col justify-center items-center"
+                className="text-sm sm:text-base p-1 flex-1 flex gap-2 sm:gap-0 sm:flex-col justify-center items-center"
               >
-                <MdOutlineModeEditOutline className="text-2xl" title="Edit" />
-                Edit
+                <MdOutlineModeEditOutline className="text-xl sm:text-2xl" />
+                {t('edit')}
               </Link>
               <Link
                 to={text.id}
                 state={{ isEditMode: false }}
-                className="p-1 flex-1 flex gap-2 sm:gap-0 sm:flex-col justify-center items-center"
+                className="text-sm sm:text-base p-1 flex-1 flex gap-2 sm:gap-0 sm:flex-col justify-center items-center"
               >
-                <IoEyeOutline className="text-2xl" title="Preview" />
-                Preview
+                <IoEyeOutline className="text-xl sm:text-2xl" />
+                {t('preview')}
               </Link>
             </div>
           </div>
           {(text.createdAt || text.updatedAt) && (
-            <div className="border-t-2 border-black dark:border-gray-200 px-2 py-1">
+            <div className="border-t-2 border-black dark:border-gray-100 px-2 py-1">
               {text?.updatedAt && (
                 <p>
-                  Updated{' '}
+                  {t('updated')}{' '}
                   <em>
-                    {intlFormatDistance(new Date(text.updatedAt), Date.now())}
+                    {intlFormatDistance(new Date(text.updatedAt), Date.now(), {
+                      locale: i18n.language,
+                    })}
                   </em>
                 </p>
               )}
               {text.createdAt && (
                 <p>
-                  Created{' '}
+                  {t('created')}{' '}
                   <em>
-                    {intlFormatDistance(new Date(text.createdAt), Date.now())}
+                    {intlFormatDistance(new Date(text.createdAt), Date.now(), {
+                      locale: i18n.language,
+                    })}
                   </em>
                 </p>
               )}
@@ -61,9 +67,9 @@ export const TextCard = ({ text }: { text: text }) => {
           )}
           <button
             onClick={() => dispatch(deleteText(text.id))}
-            className="absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 rounded-full border-2 bg-white dark:bg-gray-800 border-black dark:border-gray-200"
+            className="absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 rounded-full border-2 bg-white dark:bg-gray-800 border-black dark:border-gray-200 transition-all duration-150"
           >
-            <IoMdClose />
+            <IoMdClose title={t('close')} />
           </button>
         </>
       ) : (

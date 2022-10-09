@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { MdOutlineLightMode, MdOutlineModeNight } from 'react-icons/md';
 
 export const ThemeSwitcher = ({ className }: { className?: string }) => {
@@ -9,6 +10,7 @@ export const ThemeSwitcher = ({ className }: { className?: string }) => {
       ? true
       : false
   );
+  const { t } = useTranslation();
   useEffect(() => {
     if (darkTheme) {
       localStorage.setItem('theme', 'dark');
@@ -24,9 +26,9 @@ export const ThemeSwitcher = ({ className }: { className?: string }) => {
       onClick={() => setDarkTheme((prev) => !prev)}
     >
       {darkTheme ? (
-        <MdOutlineModeNight title="Switch theme" />
+        <MdOutlineModeNight title={t('switchTheme')} />
       ) : (
-        <MdOutlineLightMode title="Switch theme" />
+        <MdOutlineLightMode title={t('switchTheme')} />
       )}
     </button>
   );

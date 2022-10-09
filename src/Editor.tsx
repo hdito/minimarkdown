@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router-dom';
 import { rootState } from './app/main';
@@ -16,9 +17,10 @@ export const Editor = () => {
   const { state } = useLocation();
   const [draft, setDraft] = useState(text?.content ?? '');
   const [isEditMode, setIsEditMode] = useState(state?.isEditMode ?? true);
+  const { ready } = useTranslation('translation', { useSuspense: false });
   return (
     <div className="text-gray-800 dark:text-gray-50 min-h-screen flex flex-col bg-white dark:bg-gray-800">
-      {!isLoading ? (
+      {!isLoading && ready ? (
         <>
           {isEditMode ? (
             <EditMode

@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { MdClose } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -11,6 +12,7 @@ export const SaveMessage = () => {
   const text = useSelector(selectText(id));
   const saveData = text?.save;
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   useEffect(() => {
     dispatch(clearSaveData(id));
     return () => {
@@ -27,12 +29,12 @@ export const SaveMessage = () => {
               : 'border-red-700 text-red-700 dark:border-red-400 dark:text-red-400'
           }`}
         >
-          {saveData === true ? 'Saved successfully' : 'Error on save'}{' '}
+          {saveData === true ? t('saveSuccess') : t('error')}
           <button
             className="text-2xl"
             onClick={() => dispatch(clearSaveData(id))}
           >
-            <MdClose />
+            <MdClose title={t('close')} />
           </button>
         </div>
       )}

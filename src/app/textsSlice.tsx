@@ -62,10 +62,7 @@ export const textsSlice = createSlice({
       state.texts[action.payload.id].save = action.payload.error;
     },
     clearSaveData: (state, action: PayloadAction<string>) => {
-      console.dir(action.payload);
       const text = state.texts[action.payload];
-      console.dir(state.texts);
-      console.dir(text);
       if (text.save) text.save = null;
     },
     clearError: (state) => {

@@ -8,6 +8,7 @@ import './index.css';
 import { rootSaga } from '../sagas/rootSaga';
 import userReducer from './userSlice';
 import textsReducer from './textsSlice';
+import './i18n';
 
 const sagaMiddleware = saga();
 

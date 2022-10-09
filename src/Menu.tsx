@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { BiSave } from 'react-icons/bi';
 import { IoMdClose } from 'react-icons/io';
 import { TbPin, TbPinned } from 'react-icons/tb';
@@ -16,6 +17,7 @@ export const Menu = ({ draft }: { draft: string }) => {
       : true
   );
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   useEffect(() => {
     localStorage.setItem('isPinned', JSON.stringify(isPinned));
   }, [isPinned]);
@@ -29,15 +31,15 @@ export const Menu = ({ draft }: { draft: string }) => {
     >
       <div className="flex items-center gap-2">
         <button onClick={() => dispatch(saveText({ id, content: draft }))}>
-          <BiSave />
+          <BiSave title={t('save')} />
         </button>
       </div>
       <button onClick={() => setIsPinned((prev) => !prev)}>
-        {isPinned ? <TbPinned /> : <TbPin />}
+        {isPinned ? <TbPinned title={t('unpin')} /> : <TbPin title={'pin'} />}
       </button>
       <ThemeSwitcher />
       <Link to="/texts">
-        <IoMdClose />
+        <IoMdClose title={t('close')} />
       </Link>
     </div>
   );

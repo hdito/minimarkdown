@@ -1,5 +1,6 @@
 import parse from 'html-react-parser';
 import Converter from 'markdown-it';
+import { useTranslation } from 'react-i18next';
 import { MdOutlineModeEditOutline } from 'react-icons/md';
 
 export const Preview = ({
@@ -9,6 +10,7 @@ export const Preview = ({
   draft: string;
   onShowEditor: () => void;
 }) => {
+  const { t } = useTranslation();
   const converter = new Converter({
     typographer: true,
     quotes: '«»„“',
@@ -24,7 +26,7 @@ export const Preview = ({
         onClick={() => onShowEditor()}
         className="text-2xl fixed right-4 sm:right-[10%] top-1/2 -translate-y-1/2 translate-x-1/2 opacity-20 hover:opacity-100 transition-all duration-150"
       >
-        <MdOutlineModeEditOutline title="Edit" />
+        <MdOutlineModeEditOutline title={t('edit')} />
       </button>
     </>
   );
