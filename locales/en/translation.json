@@ -22,7 +22,10 @@
   "linksAndImages": "Links & images",
   "myGithub": "My github",
   "juicyTomatoes": "Juicy tomatoes",
-  "description": "Minimarkdown was created so you can write markdown texts with as little distraction as possible. For those ununitiated markdown is a tool to write HTML in plain text with special characters like * or #.",
+  "description": {
+    "first": "Minimarkdown is a text editor where nothing will distract you from writing. You're free from annoying popups and prolonged configuration. And all of this with the support of Markdown.",
+    "second": "You can always preview your text to see how it will render in HTML. Basics of Markdown syntax are presented below."
+  },
   "italic": "Italic",
   "bold": "Bold",
   "item": "Item",

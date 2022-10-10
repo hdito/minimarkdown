@@ -13,7 +13,7 @@ export const TextCard = ({ text }: { text: text }) => {
   const dispatch = useDispatch();
   const { t, i18n } = useTranslation();
   return (
-    <div className="relative border-2 h-[240px] sm:max-w-[300px] w-full border-black dark:border-gray-100 rounded-md shadow-md dark:shadow-none dark:hover:shadow-none hover:shadow-lg flex flex-col transition-all duration-150">
+    <div className="relative border-2 h-[240px] sm:max-w-[300px] w-full border-black dark:border-gray-100 rounded-md shadow-md dark:shadow-none dark:hover:shadow-none hover:shadow-lg flex flex-col">
       {!text.isLocal ? (
         <>
           <div className="flex-1 flex flex-col group relative">
@@ -22,7 +22,7 @@ export const TextCard = ({ text }: { text: text }) => {
                 {text.content}
               </div>
             </div>
-            <div className="sm:group-hover:opacity-100 sm:opacity-0 rounded-t-md sm:absolute sm:w-full sm:h-full flex sm:left-0 sm:top-0 transition-all duration-150 bg-white dark:bg-gray-800 divide-x-2 divide-black dark:divide-gray-200">
+            <div className="sm:group-hover:opacity-100 focus-within:opacity-100 sm:opacity-0 rounded-t-md sm:absolute sm:w-full sm:h-full flex sm:left-0 sm:top-0 transition-opacity duration-150 bg-white dark:bg-gray-800 divide-x-2 divide-black dark:divide-gray-200">
               <Link
                 to={text.id}
                 state={{ isEditMode: true }}
@@ -67,7 +67,7 @@ export const TextCard = ({ text }: { text: text }) => {
           )}
           <button
             onClick={() => dispatch(deleteText(text.id))}
-            className="absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 rounded-full border-2 bg-white dark:bg-gray-800 border-black dark:border-gray-200 transition-all duration-150"
+            className="absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 rounded-full border-2 bg-white dark:bg-gray-800 border-black dark:border-gray-200"
           >
             <IoMdClose title={t('close')} />
           </button>

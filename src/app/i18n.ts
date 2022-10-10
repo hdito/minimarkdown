@@ -12,6 +12,7 @@ i18n
     nonExplicitSupportedLngs: true,
     supportedLngs: ['en', 'ru'],
     load: 'languageOnly',
+    debug: true,
   });
 
 export default i18n;

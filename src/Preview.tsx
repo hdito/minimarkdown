@@ -19,7 +19,7 @@ export const Preview = ({
 
   return (
     <>
-      <div className="view-text sm:px-[20%] px-8 py-4 flex-1 overflow-scroll break-all">
+      <div className="view-text sm:px-[20%] px-8 py-4 flex-1 overflow-scroll break-words">
         {parse(html)}
       </div>
       <button
