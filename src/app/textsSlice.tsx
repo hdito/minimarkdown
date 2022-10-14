@@ -91,6 +91,7 @@ export const saveText = createAction<{ id: string; content: string }>(
   'texts/saveText'
 );
 export const addText = createAction<string>('texts/addText');
+export const subscribeTexts = createAction<string>('texts/subscribeTexts');
 
 export default textsSlice.reducer;
 
