@@ -9,7 +9,7 @@ import { TextsLayout } from '../TextsLayout';
 import { subscribeTexts } from './textsSlice';
 import { selectUid, signIn } from './userSlice';
 
-function App(): JSX.Element {
+function App() {
   const dispatch = useDispatch();
   const uid = useSelector(selectUid());
   const { ready } = useTranslation('translation', { useSuspense: false });

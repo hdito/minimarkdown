@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "minimarkdown",
+    "default": "minimarkdown-dev",
     "dev": "minimarkdown-dev",
     "prod": "minimarkdown"
   },
