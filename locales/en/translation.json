@@ -13,6 +13,7 @@
   "pin": "Pin",
   "unpin": "Unpin",
   "error": "Error has occured",
+  "errorMessage": "Reload this page and if the problem persists try again later.",
   "saveSuccess": "Saved",
   "errorOnSave": "Error on save",
   "errorTip": {

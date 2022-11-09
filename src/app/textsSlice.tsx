@@ -11,7 +11,7 @@ import { rootState } from './main';
 type initialState = {
   texts: { [key: string]: text };
   isLoading: boolean;
-  error: unknown | null;
+  error: FirestoreError | Error | null;
 };
 
 const initialState: initialState = { texts: {}, isLoading: true, error: null };
@@ -21,22 +21,35 @@ export const textsSlice = createSlice({
   initialState,
   reducers: {
     deleteTextFail: (state, action: ActionErrorPayload) => {
-      state.error = action.payload;
+      if (action.payload instanceof FirestoreError) {
+        state.error = action.payload;
+        return;
+      }
+      state.error = new Error('Unknown error');
     },
     fetchSuccess: (state) => {
       state.error = null;
       state.isLoading = false;
     },
     fetchError: (state, action: ActionErrorPayload) => {
-      state.error = action.payload;
+      if (action.payload instanceof FirestoreError) {
+        state.error = action.payload;
+        return;
+      }
+      state.error = new Error('Unknown error');
+
       state.isLoading = false;
     },
     fetchTexts: (state) => {
       state.isLoading = true;
     },
     addTextError: (state, action: ActionErrorPayload) => {
+      if (action.payload instanceof FirestoreError) {
+        state.error = action.payload;
+        return;
+      }
+      state.error = new Error('Unknown error');
       state.isLoading = false;
-      state.error = action.payload;
     },
     addTextSuccess: (state, action: ActionTextPayload) => {
       state.texts[action.payload.id] = { ...action.payload };
