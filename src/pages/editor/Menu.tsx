@@ -5,8 +5,8 @@ import { IoMdClose } from 'react-icons/io';
 import { TbPin, TbPinned } from 'react-icons/tb';
 import { useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import { saveText } from './app/textsSlice';
-import { ThemeSwitcher } from './ThemeSwitcher';
+import { saveText } from '../../app/textsSlice';
+import { ThemeSwitcher } from '../../components/ThemeSwitcher';
 
 export const Menu = ({ draft }: { draft: string }) => {
   const params = useParams();

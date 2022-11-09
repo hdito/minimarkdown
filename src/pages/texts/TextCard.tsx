@@ -4,9 +4,9 @@ import { IoEyeOutline } from 'react-icons/io5';
 import { MdOutlineModeEditOutline } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { LoadingSpinner } from './LoadingSpinner';
-import { text } from './types/textTypes';
-import { deleteText } from './app/textsSlice';
+import { LoadingSpinner } from '../../components/LoadingSpinner';
+import { text } from '../../types/textTypes';
+import { deleteText } from '../../app/textsSlice';
 import { useTranslation } from 'react-i18next';
 
 export const TextCard = ({ text }: { text: text }) => {

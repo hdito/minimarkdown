@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { LanguageSelect } from './LanguageSelect';
-import { ThemeSwitcher } from './ThemeSwitcher';
+import { LanguageSelect } from '../../components/LanguageSelect';
+import { ThemeSwitcher } from '../../components/ThemeSwitcher';
 
 export const Help = () => {
   const { t, i18n } = useTranslation();

@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { rootState } from './app/main';
+import { rootState } from '../../app/main';
 import { EditMode } from './EditMode';
-import { LoadingSpinner } from './LoadingSpinner';
+import { LoadingSpinner } from '../../components/LoadingSpinner';
 import { Menu } from './Menu';
 import { Preview } from './Preview';
-import { SaveMessage } from './components/SaveMessage';
+import { SaveMessage } from '../../components/SaveMessage';
 
 export const Editor = () => {
   const params = useParams();

@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import { HiOutlinePlus } from 'react-icons/hi';
 import { useDispatch, useSelector } from 'react-redux';
-import { addText, selectTextsArray } from './app/textsSlice';
-import { selectUid } from './app/userSlice';
+import { addText, selectTextsArray } from '../../app/textsSlice';
+import { selectUid } from '../../app/userSlice';
 import { TextCard } from './TextCard';
-import { sortTexts } from './utils/sortTexts';
+import { sortTexts } from '../../utils/sortTexts';
 
 export const Texts = () => {
   const texts = useSelector(selectTextsArray());

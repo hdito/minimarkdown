@@ -2,11 +2,11 @@ import { useTranslation } from 'react-i18next';
 import { IoHelpCircleOutline } from 'react-icons/io5';
 import { useSelector } from 'react-redux';
 import { Link, Outlet } from 'react-router-dom';
-import { rootState } from './app/main';
+import { rootState } from '../../app/main';
 import { ErrorTextsMessage } from './ErrorTextsMessage';
-import { LanguageSelect } from './LanguageSelect';
-import { LoadingSpinner } from './LoadingSpinner';
-import { ThemeSwitcher } from './ThemeSwitcher';
+import { LanguageSelect } from '../../components/LanguageSelect';
+import { LoadingSpinner } from '../../components/LoadingSpinner';
+import { ThemeSwitcher } from '../../components/ThemeSwitcher';
 
 export const TextsLayout = () => {
   const isLoading = useSelector((state: rootState) => state.texts.isLoading);
