@@ -25,6 +25,7 @@
     "autoprefixer": "^10.4.12",
     "date-fns": "^2.29.3",
     "eslint": ">=8.0.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard-with-typescript": "^23.0.0",
     "eslint-config-xo": "^0.42.0",
     "eslint-config-xo-typescript": "^0.53.0",

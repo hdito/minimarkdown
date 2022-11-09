@@ -11,8 +11,10 @@ specifiers:
   '@typescript-eslint/parser': ^5.39.0
   '@vitejs/plugin-react': ^2.1.0
   autoprefixer: ^10.4.12
+  clsx: ^1.2.1
   date-fns: ^2.29.3
   eslint: '>=8.0.0'
+  eslint-config-prettier: ^8.5.0
   eslint-config-standard-with-typescript: ^23.0.0
   eslint-config-xo: ^0.42.0
   eslint-config-xo-typescript: ^0.53.0
@@ -26,6 +28,7 @@ specifiers:
   i18next-browser-languagedetector: ^6.1.8
   i18next-http-backend: ^1.4.4
   markdown-it: ^13.0.1
+  pnpm: ^7.14.2
   postcss: ^8.4.16
   prettier: ^2.7.1
   react: ^18.2.0
@@ -55,8 +58,10 @@ devDependencies:
   '@typescript-eslint/parser': 5.39.0_ypn2ylkkyfa5i233caldtndbqa
   '@vitejs/plugin-react': 2.1.0_vite@3.1.4
   autoprefixer: 10.4.12_postcss@8.4.16
+  clsx: 1.2.1
   date-fns: 2.29.3
   eslint: 8.24.0
+  eslint-config-prettier: 8.5.0_eslint@8.24.0
   eslint-config-standard-with-typescript: 23.0.0_d3fnrl5am7mk7twr547f3qmcte
   eslint-config-xo: 0.42.0_eslint@8.24.0
   eslint-config-xo-typescript: 0.53.0_px7jklvqn7tozicw2w6rfql3v4
@@ -70,6 +75,7 @@ devDependencies:
   i18next-browser-languagedetector: 6.1.8
   i18next-http-backend: 1.4.4
   markdown-it: 13.0.1
+  pnpm: 7.14.2
   postcss: 8.4.16
   prettier: 2.7.1
   react-i18next: 11.18.6_vfm63zmruocgezzfl2v26zlzpy
@@ -1526,6 +1532,11 @@ packages:
       wrap-ansi: 7.0.0
     dev: true
 
+  /clsx/1.2.1:
+    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
+    dev: true
+
   /color-convert/1.9.3:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}
     dependencies:
@@ -1999,6 +2010,15 @@ packages:
   /escape-string-regexp/4.0.0:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
+    dev: true
+
+  /eslint-config-prettier/8.5.0_eslint@8.24.0:
+    resolution: {integrity: sha512-obmWKLUNCnhtQRKc+tmnYuQl0pFU1ibYJQ5BGhTVB08bHe9wC8qUeG7c08dj9XX+AuPj1YSGSQIHl1pnDHZR0Q==}
+    hasBin: true
+    peerDependencies:
+      eslint: '>=7.0.0'
+    dependencies:
+      eslint: 8.24.0
     dev: true
 
   /eslint-config-standard-with-typescript/23.0.0_d3fnrl5am7mk7twr547f3qmcte:
@@ -3186,6 +3206,12 @@ packages:
   /pify/2.3.0:
     resolution: {integrity: sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==}
     engines: {node: '>=0.10.0'}
+    dev: true
+
+  /pnpm/7.14.2:
+    resolution: {integrity: sha512-NSxrIaRW07jFQQ1fPFFOA8eMfuogsMeygOKd3zaFgyJBdo1oh61jl2JjWc+w0XNzWIMG7/v9HK7nP8RTL5NO3g==}
+    engines: {node: '>=14.6'}
+    hasBin: true
     dev: true
 
   /postcss-import/14.1.0_postcss@8.4.16:
