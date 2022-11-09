@@ -38,5 +38,10 @@
   "item": "Item",
   "quote": "Quote",
   "or": "or",
-  "language": "Choose language"
+  "language": "Choose language",
+  "404": {
+    "header": "There is a problem with the address",
+    "description": "You haven't got such text. To continue return to the",
+    "mainMenu": "main menu"
+  }
 }
