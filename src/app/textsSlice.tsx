@@ -1,4 +1,5 @@
 import { createAction, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { FirestoreError } from 'firebase/firestore';
 import {
   ActionErrorPayload,
   ActionIdPayload,
@@ -59,7 +60,11 @@ export const textsSlice = createSlice({
       state,
       action: PayloadAction<{ id: string; error: unknown }>
     ) => {
-      state.texts[action.payload.id].save = action.payload.error;
+      if (action.payload.error instanceof FirestoreError) {
+        state.texts[action.payload.id].save = action.payload.error;
+        return;
+      }
+      state.texts[action.payload.id].save = new Error('Unknown error');
     },
     clearSaveData: (state, action: PayloadAction<string>) => {
       const text = state.texts[action.payload];

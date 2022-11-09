@@ -7,7 +7,7 @@ import { EditMode } from './EditMode';
 import { LoadingSpinner } from './LoadingSpinner';
 import { Menu } from './Menu';
 import { Preview } from './Preview';
-import { SaveMessage } from './SaveMessage';
+import { SaveMessage } from './components/SaveMessage';
 
 export const Editor = () => {
   const params = useParams();
@@ -19,7 +19,7 @@ export const Editor = () => {
   const [isEditMode, setIsEditMode] = useState(state?.isEditMode ?? true);
   const { ready } = useTranslation('translation', { useSuspense: false });
   return (
-    <div className="text-gray-800 dark:text-gray-50 min-h-screen flex flex-col bg-white dark:bg-gray-800">
+    <div className="text-black dark:text-gray-50 min-h-screen flex flex-col bg-white dark:bg-gray-800">
       {!isLoading && ready ? (
         <>
           {isEditMode ? (

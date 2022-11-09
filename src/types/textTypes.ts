@@ -1,4 +1,4 @@
-import { Timestamp } from 'firebase/firestore';
+import { FirestoreError, Timestamp } from 'firebase/firestore';
 
 export interface text {
   id: string;
@@ -9,7 +9,7 @@ export interface text {
   error?: Error;
   isDeleted?: boolean;
   isLocal?: boolean;
-  save?: true | unknown | null;
+  save?: true | FirestoreError | Error | null;
 }
 
 export interface textFromServer {

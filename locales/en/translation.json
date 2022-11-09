@@ -14,6 +14,13 @@
   "unpin": "Unpin",
   "error": "Error has occured",
   "saveSuccess": "Saved",
+  "errorOnSave": "Error on save",
+  "errorTip": {
+    "permission-denied": "You haven't got permission to edit this text.",
+    "resource-exhausted": "Currently there are too many requests to this app. Try again later.",
+    "unknown": "Something unexpected has occurred. Try again later."
+  },
+  "hide": "Hide",
   "titles": "Titles",
   "textFormatting": "Text formatting",
   "lists": "Lists",
