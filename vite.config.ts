@@ -6,7 +6,10 @@ import { viteStaticCopy } from 'vite-plugin-static-copy';
 export default defineConfig({
   plugins: [
     viteStaticCopy({
-      targets: [{ src: 'locales', dest: './' }],
+      targets: [
+        { src: 'locales', dest: './' },
+        { src: 'fonts', dest: './' },
+      ],
     }),
     react(),
   ],
