@@ -1,0 +1,17 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /texts/{textId} {
+      allow read: if request.auth.uid == resource.data.uid;
+      allow create: if request.auth.uid == request.resource.data.uid &&
+        request.resource.data.keys().hasOnly(['id', 'uid', 'createdAt']) &&
+        request.resource.data.id == textId &&
+        request.resource.data.createdAt is timestamp;
+      allow update: if request.auth.uid == resource.data.uid &&
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['content', 'updatedAt']) &&
+        request.resource.data.content is string &&
+        request.resource.data.updatedAt is timestamp;
+      allow delete: if request.auth.uid == resource.data.uid;
+    }
+  }
+}

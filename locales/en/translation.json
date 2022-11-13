@@ -1,0 +1,48 @@
+{
+  "createNewText": "Create new text",
+  "edit": "Edit",
+  "preview": "Preview",
+  "created": "Created",
+  "updated": "Updated",
+  "switchTheme": "Switch theme",
+  "help": "Help",
+  "texts": "Texts",
+  "textsLoading": "Texts are being loaded",
+  "close": "Close",
+  "save": "Save",
+  "pin": "Pin",
+  "unpin": "Unpin",
+  "error": "Error has occured",
+  "errorMessage": "Reload this page and if the problem persists try again later.",
+  "saveSuccess": "Saved",
+  "errorOnSave": "Error on save",
+  "errorTip": {
+    "permission-denied": "You haven't got permission to edit this text.",
+    "resource-exhausted": "Currently there are too many requests to this app. Try again later.",
+    "unknown": "Something unexpected has occurred. Try again later."
+  },
+  "hide": "Hide",
+  "titles": "Titles",
+  "textFormatting": "Text formatting",
+  "lists": "Lists",
+  "quotes": "Quotes",
+  "code": "Code",
+  "linksAndImages": "Links & images",
+  "myGithub": "My github",
+  "juicyTomatoes": "Juicy tomatoes",
+  "description": {
+    "first": "Minimarkdown is a text editor where nothing will distract you from writing. You're free from annoying popups and prolonged configuration. And all of this with the support of Markdown.",
+    "second": "You can always preview your text to see how it will render in HTML. Basics of Markdown syntax are presented below."
+  },
+  "italic": "Italic",
+  "bold": "Bold",
+  "item": "Item",
+  "quote": "Quote",
+  "or": "or",
+  "language": "Choose language",
+  "404": {
+    "header": "There is a problem with the address",
+    "description": "You haven't got such text. To continue return to the",
+    "mainMenu": "main menu"
+  }
+}
