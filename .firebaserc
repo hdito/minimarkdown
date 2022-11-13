@@ -1,9 +1,0 @@
-{
-  "projects": {
-    "default": "minimarkdown-dev",
-    "dev": "minimarkdown-dev",
-    "prod": "minimarkdown"
-  },
-  "targets": {},
-  "etags": {}
-}
