@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { IoCheckmarkSharp } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { clearSaveData, selectText } from '../app/textsSlice';
+import { clearSaveData, selectText } from '@/app/textsSlice';
 
 export const SaveMessage = () => {
   const expectedErrorCodes = ['permission-denied', 'resource-exhausted'];

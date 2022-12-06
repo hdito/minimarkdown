@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import saga from 'redux-saga';
+import { rootSaga } from '@/sagas/rootSaga';
 import App from './App';
-import './index.css';
-import { rootSaga } from '../sagas/rootSaga';
 import userReducer from './userSlice';
 import textsReducer from './textsSlice';
 import './i18n';
+import './index.css';
 
 const sagaMiddleware = saga();
 

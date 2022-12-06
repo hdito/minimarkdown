@@ -17,7 +17,7 @@ import {
 import { EventChannel, eventChannel } from 'redux-saga';
 import * as Effects from 'redux-saga/effects';
 import { put, take, takeEvery } from 'redux-saga/effects';
-import { myFirestore } from '../app/firebase';
+import { myFirestore } from '@/app/firebase';
 import {
   addTextError,
   addTextSuccess,
@@ -27,8 +27,8 @@ import {
   modifyText,
   saveTextError,
   saveTextSuccess,
-} from '../app/textsSlice';
-import { text, textFromServer } from '../types/textTypes';
+} from '@/app/textsSlice';
+import { text, textFromServer } from '@/types/textTypes';
 import { user } from '@/types/user';
 
 const call: any = Effects.call;

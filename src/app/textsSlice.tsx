@@ -1,6 +1,6 @@
 import { createAction, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { FirestoreError } from 'firebase/firestore';
-import { text } from '../types/textTypes';
+import { text } from '@/types/textTypes';
 import { rootState } from './main';
 
 type initialState = {
