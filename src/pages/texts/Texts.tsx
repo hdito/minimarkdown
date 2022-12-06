@@ -17,7 +17,7 @@ export const Texts = () => {
         onClick={() => dispatch(addText(uid as string))}
         className="relative flex gap-2 sm:gap-1 sm:flex-col group self-start justify-center items-center p-2 sm:h-[240px] h-fit border-2 border-black dark:border-gray-100 rounded-md shadow-md hover:shadow-lg dark:shadow-none dark:hover:shadow-none"
       >
-        <HiOutlinePlus className="text-xl sm:text-4xl group-hover:scale-125 transition-all duration-150 " />
+        <HiOutlinePlus className="text-xl sm:text-4xl group-hover:scale-125 transition-transform" />
         {t('createNewText')}
       </button>
       {texts
