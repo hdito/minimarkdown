@@ -1,4 +1,4 @@
-import { nanoid } from '@reduxjs/toolkit';
+import { nanoid, PayloadAction } from '@reduxjs/toolkit';
 import {
   collection,
   deleteDoc,
@@ -17,7 +17,7 @@ import {
 import { EventChannel, eventChannel } from 'redux-saga';
 import * as Effects from 'redux-saga/effects';
 import { put, take, takeEvery } from 'redux-saga/effects';
-import { myFirestore } from '../app/firebase';
+import { myFirestore } from '@/app/firebase';
 import {
   addTextError,
   addTextSuccess,
@@ -27,17 +27,13 @@ import {
   modifyText,
   saveTextError,
   saveTextSuccess,
-} from '../app/textsSlice';
-import {
-  ActionIdContentPayload,
-  ActionIdPayload,
-  ActionUidPayload,
-} from '../types/textActionTypes';
-import { text, textFromServer } from '../types/textTypes';
+} from '@/app/textsSlice';
+import { text, textFromServer } from '@/types/textTypes';
+import { user } from '@/types/user';
 
 const call: any = Effects.call;
 
-function* addTextSaga(action: ActionUidPayload) {
+function* addTextSaga(action: PayloadAction<user['uid']>) {
   try {
     const id = nanoid(10);
     yield call(setDoc, doc(myFirestore, 'texts', id), {
@@ -50,7 +46,9 @@ function* addTextSaga(action: ActionUidPayload) {
   }
 }
 
-function* saveTextSaga(action: ActionIdContentPayload) {
+function* saveTextSaga(
+  action: PayloadAction<{ id: text['id']; content: text['content'] }>
+) {
   try {
     yield call(updateDoc, doc(myFirestore, 'texts', action.payload.id), {
       content: action.payload.content,
@@ -62,7 +60,7 @@ function* saveTextSaga(action: ActionIdContentPayload) {
   }
 }
 
-function* deleteTextSaga(action: ActionIdPayload) {
+function* deleteTextSaga(action: PayloadAction<text['id']>) {
   yield call(deleteDoc, doc(myFirestore, 'texts', action.payload));
 }
 
@@ -82,7 +80,7 @@ function subscribeTexts(uid: string) {
   });
 }
 
-function* subscribeTextsSaga(action: ActionUidPayload) {
+function* subscribeTextsSaga(action: PayloadAction<user['uid']>) {
   const textsChannel: EventChannel<Unsubscribe> = yield call(
     subscribeTexts,
     action.payload

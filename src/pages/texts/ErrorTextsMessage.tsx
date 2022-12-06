@@ -1,10 +1,10 @@
-import { clearError } from '../../app/textsSlice';
 import { MdClose } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
-import { rootState } from '../../app/main';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BiError } from 'react-icons/bi';
+import { rootState } from '@/app/main';
+import { clearError } from '@/app/textsSlice';
 
 export const ErrorTextsMessage = () => {
   const dispatch = useDispatch();

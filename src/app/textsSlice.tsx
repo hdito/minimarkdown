@@ -1,11 +1,6 @@
 import { createAction, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { FirestoreError } from 'firebase/firestore';
-import {
-  ActionErrorPayload,
-  ActionIdPayload,
-  ActionTextPayload,
-} from '../types/textActionTypes';
-import { text } from '../types/textTypes';
+import { text } from '@/types/textTypes';
 import { rootState } from './main';
 
 type initialState = {
@@ -20,7 +15,7 @@ export const textsSlice = createSlice({
   name: 'texts',
   initialState,
   reducers: {
-    deleteTextFail: (state, action: ActionErrorPayload) => {
+    deleteTextFail: (state, action: PayloadAction<unknown>) => {
       if (action.payload instanceof FirestoreError) {
         state.error = action.payload;
         return;
@@ -31,7 +26,7 @@ export const textsSlice = createSlice({
       state.error = null;
       state.isLoading = false;
     },
-    fetchError: (state, action: ActionErrorPayload) => {
+    fetchError: (state, action: PayloadAction<unknown>) => {
       if (action.payload instanceof FirestoreError) {
         state.error = action.payload;
         return;
@@ -43,7 +38,7 @@ export const textsSlice = createSlice({
     fetchTexts: (state) => {
       state.isLoading = true;
     },
-    addTextError: (state, action: ActionErrorPayload) => {
+    addTextError: (state, action: PayloadAction<unknown>) => {
       if (action.payload instanceof FirestoreError) {
         state.error = action.payload;
         return;
@@ -51,27 +46,27 @@ export const textsSlice = createSlice({
       state.error = new Error('Unknown error');
       state.isLoading = false;
     },
-    addTextSuccess: (state, action: ActionTextPayload) => {
+    addTextSuccess: (state, action: PayloadAction<text>) => {
       state.texts[action.payload.id] = { ...action.payload };
     },
-    deleteText: (state, action: ActionIdPayload) => {
+    deleteText: (state, action: PayloadAction<text['id']>) => {
       state.texts[action.payload].isDeleted = true;
     },
-    deleteTextSuccess: (state, action: ActionIdPayload) => {
+    deleteTextSuccess: (state, action: PayloadAction<text['id']>) => {
       delete state.texts[action.payload];
     },
-    modifyText: (state, action: ActionTextPayload) => {
+    modifyText: (state, action: PayloadAction<text>) => {
       state.texts[action.payload.id] = {
         ...state.texts[action.payload.id],
         ...action.payload,
       };
     },
-    saveTextSuccess: (state, action: ActionIdPayload) => {
+    saveTextSuccess: (state, action: PayloadAction<text['id']>) => {
       state.texts[action.payload].save = true;
     },
     saveTextError: (
       state,
-      action: PayloadAction<{ id: string; error: unknown }>
+      action: PayloadAction<{ id: text['id']; error: unknown }>
     ) => {
       if (action.payload.error instanceof FirestoreError) {
         state.texts[action.payload.id].save = action.payload.error;
@@ -79,7 +74,7 @@ export const textsSlice = createSlice({
       }
       state.texts[action.payload.id].save = new Error('Unknown error');
     },
-    clearSaveData: (state, action: PayloadAction<string>) => {
+    clearSaveData: (state, action: PayloadAction<text['id']>) => {
       const text = state.texts[action.payload];
       if (text.save) text.save = null;
     },

@@ -2,10 +2,10 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { Editor } from '../pages/editor/Editor';
-import { Help } from '../pages/help/Help';
-import { Texts } from '../pages/texts/Texts';
-import { TextsLayout } from '../pages/texts/TextsLayout';
+import { Editor } from '@/pages/editor/Editor';
+import { Help } from '@/pages/help/Help';
+import { Texts } from '@/pages/texts/Texts';
+import { TextsLayout } from '@/pages/texts/TextsLayout';
 import { rootState } from './main';
 import { subscribeTexts } from './textsSlice';
 import { signIn } from './userSlice';
@@ -25,7 +25,7 @@ function App() {
   }, [userInfo]);
 
   return (
-    <>
+    <div className="font-open-sans">
       {ready &&
         (userInfo.error !== null ? (
           <div className="px-4 py-2">
@@ -48,7 +48,7 @@ function App() {
         ) : (
           <></>
         ))}
-    </>
+    </div>
   );
 }
 
