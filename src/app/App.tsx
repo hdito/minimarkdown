@@ -25,7 +25,7 @@ function App() {
   }, [userInfo]);
 
   return (
-    <>
+    <div className="font-open-sans">
       {ready &&
         (userInfo.error !== null ? (
           <div className="px-4 py-2">
@@ -48,7 +48,7 @@ function App() {
         ) : (
           <></>
         ))}
-    </>
+    </div>
   );
 }
 

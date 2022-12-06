@@ -9,6 +9,8 @@ import userReducer from './userSlice';
 import textsReducer from './textsSlice';
 import './i18n';
 import './index.css';
+import '@fontsource/open-sans/variable.css';
+import '@fontsource/open-sans/variable-italic.css';
 
 const sagaMiddleware = saga();
 

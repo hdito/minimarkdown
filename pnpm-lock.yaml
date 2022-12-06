@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@fontsource/open-sans': ^4.5.13
   '@reduxjs/toolkit': ^1.8.5
   '@tailwindcss/line-clamp': ^0.4.2
   '@types/markdown-it': ^12.2.3
@@ -47,6 +48,7 @@ dependencies:
   react-dom: 18.2.0_react@18.2.0
 
 devDependencies:
+  '@fontsource/open-sans': 4.5.13
   '@reduxjs/toolkit': 1.8.5_kuo2ie247izvzll3jejufdtq3q
   '@tailwindcss/line-clamp': 0.4.2_tailwindcss@3.1.8
   '@types/markdown-it': 12.2.3
@@ -866,6 +868,10 @@ packages:
 
   /@firebase/webchannel-wrapper/0.7.0:
     resolution: {integrity: sha512-4ACd/c6ushrLuhn0+yjB9hznhnsc2IML6pf0Ulb1Q7w8SvR1jNGPu/Y7i4kvOm6R+WJkMHwyy5z3i3gN+Tawug==}
+    dev: true
+
+  /@fontsource/open-sans/4.5.13:
+    resolution: {integrity: sha512-/UzqP7ZFk145XAq8KG4pvFPP7UQhtreDGXgqXZjagCDreKxcrhwn/x7DYz9rPcycWkLUVApIybcoczGZiM0cRg==}
     dev: true
 
   /@grpc/grpc-js/1.7.1:
