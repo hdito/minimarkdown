@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { ActionErrorPayload, ActionUidPayload } from '../types/userActionTypes';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { user } from '../types/user';
 import { rootState } from './main';
 
 type initialState = {
@@ -14,12 +14,12 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    signedIn: (state, action: ActionUidPayload) => {
+    signedIn: (state, action: PayloadAction<user['uid']>) => {
       state.isLoading = false;
       state.uid = action.payload;
       state.error = null;
     },
-    signInFailed: (state, action: ActionErrorPayload) => {
+    signInFailed: (state, action: PayloadAction<unknown>) => {
       state.isLoading = false;
       state.error = action.payload;
       state.uid = null;
