@@ -9,7 +9,11 @@ import { LoadingSpinner } from '@/components/LoadingSpinner';
 import { text } from '@/types/textTypes';
 import { deleteText } from '@/app/textsSlice';
 
-export const TextCard = ({ text }: { text: text }) => {
+interface TextCardProps {
+  text: text;
+}
+
+export const TextCard = ({ text }: TextCardProps) => {
   const dispatch = useDispatch();
   const { t, i18n } = useTranslation();
   return (

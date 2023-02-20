@@ -5,10 +5,12 @@ import { IoMdClose } from 'react-icons/io';
 import { TbPin, TbPinned } from 'react-icons/tb';
 import { useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import { saveText } from '@/app/textsSlice';
-import { ThemeSwitcher } from '@/components/ThemeSwitcher';
 
-export const Menu = ({ draft }: { draft: string }) => {
+interface MenuProps {
+  draft: string;
+}
+
+export const Menu = ({ draft }: MenuProps) => {
   const params = useParams();
   const id = params.id as string;
   const [isPinned, setIsPinned] = useState(

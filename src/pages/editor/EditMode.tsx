@@ -2,15 +2,13 @@ import { ChangeEventHandler } from 'react';
 import { useTranslation } from 'react-i18next';
 import { IoEyeOutline } from 'react-icons/io5';
 
-export const EditMode = ({
-  draft,
-  onChange,
-  onShowPreview,
-}: {
+interface EditModeProps {
   draft: string;
   onChange: ChangeEventHandler<HTMLTextAreaElement>;
   onShowPreview: () => void;
-}) => {
+}
+
+export const EditMode = ({ draft, onChange, onShowPreview }: EditModeProps) => {
   const { t } = useTranslation();
   return (
     <>

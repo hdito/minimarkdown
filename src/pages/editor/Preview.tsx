@@ -3,13 +3,12 @@ import Converter from 'markdown-it';
 import { useTranslation } from 'react-i18next';
 import { MdOutlineModeEditOutline } from 'react-icons/md';
 
-export const Preview = ({
-  draft,
-  onShowEditor,
-}: {
+interface PreviewProps {
   draft: string;
   onShowEditor: () => void;
-}) => {
+}
+
+export const Preview = ({ draft, onShowEditor }: PreviewProps) => {
   const { t } = useTranslation();
   const converter = new Converter({
     typographer: true,

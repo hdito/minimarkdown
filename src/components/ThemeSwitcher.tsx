@@ -2,14 +2,11 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdOutlineLightMode, MdOutlineModeNight } from 'react-icons/md';
 
-export const ThemeSwitcher = ({ className }: { className?: string }) => {
-  const [darkTheme, setDarkTheme] = useState(
-    localStorage.theme === 'dark' ||
-      (!('theme' in localStorage) &&
-        window.matchMedia('prefers-color-scheme: dark').matches)
-      ? true
-      : false
-  );
+interface ThemeSwitcherProps {
+  className?: string;
+}
+
+export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
   const { t } = useTranslation();
   useEffect(() => {
     if (darkTheme) {
