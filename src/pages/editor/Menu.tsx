@@ -1,4 +1,6 @@
-import { useEffect, useState } from 'react';
+import { saveText } from '@/app/textsSlice';
+import { ThemeSwitcher } from '@/components/ThemeSwitcher';
+import { useMenu } from '@/hooks/useMenu';
 import { useTranslation } from 'react-i18next';
 import { BiSave } from 'react-icons/bi';
 import { IoMdClose } from 'react-icons/io';
@@ -13,16 +15,13 @@ interface MenuProps {
 export const Menu = ({ draft }: MenuProps) => {
   const params = useParams();
   const id = params.id as string;
-  const [isPinned, setIsPinned] = useState(
-    'isPinned' in localStorage
-      ? (JSON.parse(localStorage.getItem('isPinned') as string) as boolean)
-      : true
-  );
+
   const dispatch = useDispatch();
+
   const { t } = useTranslation();
-  useEffect(() => {
-    localStorage.setItem('isPinned', JSON.stringify(isPinned));
-  }, [isPinned]);
+
+  const [isPinned, setIsPinned] = useMenu();
+
   return (
     <div
       className={`${
@@ -37,7 +36,11 @@ export const Menu = ({ draft }: MenuProps) => {
         </button>
       </div>
       <button onClick={() => setIsPinned((prev) => !prev)}>
-        {isPinned ? <TbPinned title={t('unpin')} /> : <TbPin title={'pin'} />}
+        {isPinned ? (
+          <TbPinned title={t('unpin')} />
+        ) : (
+          <TbPin title={t('pin')} />
+        )}
       </button>
       <ThemeSwitcher />
       <Link to="/texts">
