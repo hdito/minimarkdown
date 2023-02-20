@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useThemeSwitcher } from '@/hooks/useThemeSwitcher';
 import { useTranslation } from 'react-i18next';
 import { MdOutlineLightMode, MdOutlineModeNight } from 'react-icons/md';
 
@@ -7,16 +7,10 @@ interface ThemeSwitcherProps {
 }
 
 export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
+  const [darkTheme, setDarkTheme] = useThemeSwitcher();
+
   const { t } = useTranslation();
-  useEffect(() => {
-    if (darkTheme) {
-      localStorage.setItem('theme', 'dark');
-      document.documentElement.classList.add('dark');
-      return;
-    }
-    localStorage.setItem('theme', 'light');
-    document.documentElement.classList.remove('dark');
-  }, [darkTheme]);
+
   return (
     <button
       className={`text-2xl ${className}`}
