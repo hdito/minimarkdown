@@ -19,7 +19,7 @@ export const TextCard = ({ text }: TextCardProps) => {
   const { t, i18n } = useTranslation();
 
   return (
-    <div className="relative flex h-[240px] w-full flex-col rounded-md border-2 border-black shadow-md hover:shadow-lg dark:border-gray-100 dark:shadow-none dark:hover:shadow-none sm:max-w-[300px]">
+    <div className="relative flex h-[240px] w-full flex-col rounded-md border-2 border-black shadow-md transition-shadow hover:shadow-lg dark:border-gray-100 dark:shadow-none dark:hover:shadow-none sm:max-w-[300px]">
       {!text.isLocal ? (
         <>
           <div className="group relative flex flex-1 flex-col">
