@@ -12,15 +12,19 @@ import { Preview } from './Preview';
 export const Editor = () => {
   const params = useParams();
   const id = params.id as string;
+  const { state } = useLocation();
+
   const text = useSelector((state: rootState) => state.texts.texts[id]);
   const isLoading = useSelector((state: rootState) => state.texts.isLoading);
-  const { state } = useLocation();
+
   const [draft, setDraft] = useState(text?.content ?? '');
   const [isEditMode, setIsEditMode] = useState(state?.isEditMode ?? true);
+
   const { ready } = useTranslation('translation', { useSuspense: false });
   const { t } = useTranslation();
+
   return (
-    <div className="text-black dark:text-gray-50 min-h-screen flex flex-col bg-white dark:bg-gray-800">
+    <div className="flex min-h-screen flex-col bg-white text-black dark:bg-gray-800 dark:text-gray-50">
       {text ? (
         <>
           {!isLoading && ready ? (
@@ -41,14 +45,14 @@ export const Editor = () => {
               <SaveMessage />
             </>
           ) : (
-            <div className="flex-1 flex items-center justify-center">
+            <div className="flex flex-1 items-center justify-center">
               <LoadingSpinner />
             </div>
           )}
         </>
       ) : (
         <div className="py-2 px-4">
-          <h1 className="text-2xl sm:text-4xl font-bold mb-4">
+          <h1 className="mb-4 text-2xl font-bold sm:text-4xl">
             {t('404.header')}
           </h1>
           <p>

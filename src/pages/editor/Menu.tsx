@@ -27,8 +27,8 @@ export const Menu = ({ draft }: MenuProps) => {
       className={`${
         isPinned
           ? ''
-          : 'opacity-0 hover:opacity-100 transition-all duration-200'
-      } sticky bottom-0 flex justify-center items-center gap-8 text-2xl p-2 border-t-2 border-black dark:border-gray-200 bg-white dark:bg-gray-800`}
+          : 'opacity-0 transition-all duration-200 hover:opacity-100'
+      } sticky bottom-0 flex items-center justify-center gap-8 border-t-2 border-black bg-white p-2 text-2xl dark:border-gray-200 dark:bg-gray-800`}
     >
       <div className="flex items-center gap-2">
         <button onClick={() => dispatch(saveText({ id, content: draft }))}>

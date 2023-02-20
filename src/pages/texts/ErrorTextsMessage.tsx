@@ -7,8 +7,9 @@ import { rootState } from '@/app/main';
 import { clearError } from '@/app/textsSlice';
 
 export const ErrorTextsMessage = () => {
-  const dispatch = useDispatch();
   const error = useSelector((state: rootState) => state.texts.error);
+  const dispatch = useDispatch();
+
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -21,16 +22,16 @@ export const ErrorTextsMessage = () => {
   return (
     <>
       {error !== null && (
-        <div className="fixed bottom-4 max-w-full sm:max-w-[400px] left-1/2 -translate-x-1/2 flex items-center bg-white dark:bg-gray-800 border-4 rounded-md border-black dark:border-gray-50">
+        <div className="fixed bottom-4 left-1/2 flex max-w-full -translate-x-1/2 items-center rounded-md border-4 border-black bg-white dark:border-gray-50 dark:bg-gray-800 sm:max-w-[400px]">
           <div className="px-1 py-0.5">
             <BiError className="text-4xl text-red-700 dark:text-red-500" />
           </div>
-          <div className="flex gap-1 flex-col px-2 py-0.5 border-r-4 border-black dark:border-gray-50">
+          <div className="flex flex-col gap-1 border-r-4 border-black px-2 py-0.5 dark:border-gray-50">
             <div className="font-bold">{t('error')}</div>
             <div>{t('errorMessage')}</div>
           </div>
           <button
-            className="text-4xl px-2 py-1"
+            className="px-2 py-1 text-4xl"
             onClick={() => dispatch(clearError())}
           >
             <MdClose title={t('close')} />

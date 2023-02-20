@@ -10,6 +10,7 @@ export const useThemeSwitcher = (): useThemeSwitcherOutput => {
       ? true
       : false
   );
+
   useEffect(() => {
     if (darkTheme) {
       localStorage.setItem('theme', 'dark');

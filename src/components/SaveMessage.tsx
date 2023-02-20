@@ -28,20 +28,20 @@ export const SaveMessage = () => {
     <>
       {saveData && (
         <div
-          className={`fixed top-4 right-4 rounded-md border-2 border-black dark:border-gray-50 bg-white dark:bg-gray-800 overflow-hidden ${
+          className={`fixed top-4 right-4 overflow-hidden rounded-md border-2 border-black bg-white dark:border-gray-50 dark:bg-gray-800 ${
             saveData === true ? 'flex items-center' : 'max-w-[200px]'
           }`}
         >
           {saveData === true ? (
             <>
-              <div className="px-2 py-1 flex items-center gap-1 border-r-2 border-black dark:border-gray-50">
+              <div className="flex items-center gap-1 border-r-2 border-black px-2 py-1 dark:border-gray-50">
                 <IoCheckmarkSharp className="text-xl" />
                 <div>{t('saveSuccess')}</div>
               </div>
             </>
           ) : (
             <>
-              <h2 className="font-bold px-2 pt-1">{t('errorOnSave')}</h2>
+              <h2 className="px-2 pt-1 font-bold">{t('errorOnSave')}</h2>
               <div className="border-b-2 border-black px-2 pb-1">
                 {saveData instanceof FirestoreError
                   ? expectedErrorCodes.includes(saveData.code)
@@ -52,7 +52,7 @@ export const SaveMessage = () => {
             </>
           )}
           <button
-            className="font-bold px-2 py-1"
+            className="px-2 py-1 font-bold"
             onClick={() => dispatch(clearSaveData(id))}
           >
             {t('hide')}

@@ -84,6 +84,8 @@ export const textsSlice = createSlice({
   },
 });
 
+export default textsSlice.reducer;
+
 export const {
   clearError,
   saveTextSuccess,
@@ -103,10 +105,10 @@ export const {
 export const saveText = createAction<{ id: string; content: string }>(
   'texts/saveText'
 );
-export const addText = createAction<string>('texts/addText');
-export const subscribeTexts = createAction<string>('texts/subscribeTexts');
 
-export default textsSlice.reducer;
+export const addText = createAction<string>('texts/addText');
+
+export const subscribeTexts = createAction<string>('texts/subscribeTexts');
 
 export const selectTextsArray = () => (state: rootState) =>
   Object.keys(state.texts.texts).map((textKey) => state.texts.texts[textKey]);

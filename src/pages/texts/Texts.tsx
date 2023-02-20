@@ -8,16 +8,18 @@ import { sortTexts } from '@/utils/sortTexts';
 
 export const Texts = () => {
   const texts = useSelector(selectTextsArray());
-  const dispatch = useDispatch();
   const uid = useSelector(selectUid());
+  const dispatch = useDispatch();
+
   const { t } = useTranslation();
+
   return (
     <>
       <button
         onClick={() => dispatch(addText(uid as string))}
-        className="relative flex gap-2 sm:gap-1 sm:flex-col group self-start justify-center items-center p-2 sm:h-[240px] h-fit border-2 border-black dark:border-gray-100 rounded-md shadow-md hover:shadow-lg dark:shadow-none dark:hover:shadow-none"
+        className="group relative flex h-fit items-center justify-center gap-2 self-start rounded-md border-2 border-black p-2 shadow-md hover:shadow-lg dark:border-gray-100 dark:shadow-none dark:hover:shadow-none sm:h-[240px] sm:flex-col sm:gap-1"
       >
-        <HiOutlinePlus className="text-xl sm:text-4xl group-hover:scale-125 transition-transform" />
+        <HiOutlinePlus className="text-xl transition-transform group-hover:scale-125 sm:text-4xl" />
         {t('createNewText')}
       </button>
       {texts

@@ -15,22 +15,24 @@ interface TextCardProps {
 
 export const TextCard = ({ text }: TextCardProps) => {
   const dispatch = useDispatch();
+
   const { t, i18n } = useTranslation();
+
   return (
-    <div className="relative border-2 h-[240px] sm:max-w-[300px] w-full border-black dark:border-gray-100 rounded-md shadow-md dark:shadow-none dark:hover:shadow-none hover:shadow-lg flex flex-col">
+    <div className="relative flex h-[240px] w-full flex-col rounded-md border-2 border-black shadow-md hover:shadow-lg dark:border-gray-100 dark:shadow-none dark:hover:shadow-none sm:max-w-[300px]">
       {!text.isLocal ? (
         <>
-          <div className="flex-1 flex flex-col group relative">
-            <div className="flex-1 p-1 border-b-2 sm:border-b-0 border-black dark:border-gray-100 sm:border-0 whitespace-pre-wrap break-words">
-              <div className="leading-tight line-clamp-3 sm:line-clamp-[7] text-sm">
+          <div className="group relative flex flex-1 flex-col">
+            <div className="flex-1 whitespace-pre-wrap break-words border-b-2 border-black p-1 dark:border-gray-100 sm:border-0 sm:border-b-0">
+              <div className="text-sm leading-tight line-clamp-3 sm:line-clamp-[7]">
                 {text.content}
               </div>
             </div>
-            <div className="sm:group-hover:opacity-100 focus-within:opacity-100 sm:opacity-0 rounded-t-md sm:absolute sm:w-full sm:h-full flex sm:left-0 sm:top-0 transition-opacity duration-150 bg-white dark:bg-gray-800 divide-x-2 divide-black dark:divide-gray-200">
+            <div className="flex divide-x-2 divide-black rounded-t-md bg-white transition-opacity duration-150 focus-within:opacity-100 dark:divide-gray-200 dark:bg-gray-800 sm:absolute sm:left-0 sm:top-0 sm:h-full sm:w-full sm:opacity-0 sm:group-hover:opacity-100">
               <Link
                 to={text.id}
                 state={{ isEditMode: true }}
-                className="text-sm sm:text-base p-1 flex-1 flex gap-2 sm:gap-0 sm:flex-col justify-center items-center"
+                className="flex flex-1 items-center justify-center gap-2 p-1 text-sm sm:flex-col sm:gap-0 sm:text-base"
               >
                 <MdOutlineModeEditOutline className="text-xl sm:text-2xl" />
                 {t('edit')}
@@ -38,7 +40,7 @@ export const TextCard = ({ text }: TextCardProps) => {
               <Link
                 to={text.id}
                 state={{ isEditMode: false }}
-                className="text-sm sm:text-base p-1 flex-1 flex gap-2 sm:gap-0 sm:flex-col justify-center items-center"
+                className="flex flex-1 items-center justify-center gap-2 p-1 text-sm sm:flex-col sm:gap-0 sm:text-base"
               >
                 <IoEyeOutline className="text-xl sm:text-2xl" />
                 {t('preview')}
@@ -46,7 +48,7 @@ export const TextCard = ({ text }: TextCardProps) => {
             </div>
           </div>
           {(text.createdAt || text.updatedAt) && (
-            <div className="border-t-2 border-black dark:border-gray-100 px-2 py-1">
+            <div className="border-t-2 border-black px-2 py-1 dark:border-gray-100">
               {text?.updatedAt && (
                 <p>
                   {t('updated')}{' '}
@@ -71,13 +73,13 @@ export const TextCard = ({ text }: TextCardProps) => {
           )}
           <button
             onClick={() => dispatch(deleteText(text.id))}
-            className="absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 rounded-full border-2 bg-white dark:bg-gray-800 border-black dark:border-gray-200"
+            className="absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-black bg-white dark:border-gray-200 dark:bg-gray-800"
           >
             <IoMdClose title={t('close')} />
           </button>
         </>
       ) : (
-        <div className="w-full h-full flex justify-center items-center">
+        <div className="flex h-full w-full items-center justify-center">
           <LoadingSpinner />
         </div>
       )}
