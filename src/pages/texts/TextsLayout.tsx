@@ -25,7 +25,7 @@ export const TextsLayout = () => {
         </Link>
         <ThemeSwitcher />
       </header>
-      <div className="flex flex-1 flex-col gap-4 pb-2 sm:flex-row sm:flex-wrap">
+      <div className="flex flex-1 flex-col content-start gap-4 pb-2 sm:flex-row sm:flex-wrap">
         {!isLoading ? (
           <Outlet />
         ) : (

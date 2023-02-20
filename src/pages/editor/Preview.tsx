@@ -19,7 +19,7 @@ export const Preview = ({ draft, onShowEditor }: PreviewProps) => {
 
   return (
     <>
-      <div className="view-text flex-1 overflow-scroll break-words px-8 py-4 sm:px-[20%]">
+      <div className="view-text flex-1 break-words px-8 py-4 sm:px-[20%]">
         {parse(html)}
       </div>
       <button
