@@ -29,7 +29,7 @@ function App() {
       {ready &&
         (userInfo.error !== null ? (
           <div className="px-4 py-2">
-            <h1 className="text-2xl sm:text-4xl text-black dark:text-gray-50 mb-4">
+            <h1 className="mb-4 text-2xl text-black dark:text-gray-50 sm:text-4xl">
               {t('error')}
             </h1>
             <p>{t('errorMessage')}</p>

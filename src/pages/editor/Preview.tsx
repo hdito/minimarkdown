@@ -3,28 +3,28 @@ import Converter from 'markdown-it';
 import { useTranslation } from 'react-i18next';
 import { MdOutlineModeEditOutline } from 'react-icons/md';
 
-export const Preview = ({
-  draft,
-  onShowEditor,
-}: {
+interface PreviewProps {
   draft: string;
   onShowEditor: () => void;
-}) => {
-  const { t } = useTranslation();
+}
+
+export const Preview = ({ draft, onShowEditor }: PreviewProps) => {
   const converter = new Converter({
     typographer: true,
     quotes: '«»„“',
   });
   const html = converter.render(draft);
 
+  const { t } = useTranslation();
+
   return (
     <>
-      <div className="view-text sm:px-[20%] px-8 py-4 flex-1 overflow-scroll break-words">
+      <div className="view-text flex-1 overflow-scroll break-words px-8 py-4 sm:px-[20%]">
         {parse(html)}
       </div>
       <button
         onClick={() => onShowEditor()}
-        className="text-2xl fixed right-4 sm:right-[10%] top-1/2 -translate-y-1/2 translate-x-1/2 opacity-20 hover:opacity-100 transition-all duration-150"
+        className="fixed right-4 top-1/2 -translate-y-1/2 translate-x-1/2 text-2xl opacity-20 transition-all duration-150 hover:opacity-100 sm:right-[10%]"
       >
         <MdOutlineModeEditOutline title={t('edit')} />
       </button>

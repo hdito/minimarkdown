@@ -5,12 +5,13 @@ const languages: { [key: string]: string } = { en: 'English', ru: 'Русски�
 
 export const LanguageSelect = () => {
   const { t, i18n } = useTranslation();
+
   return (
     <div className="group relative max-h-[30px]">
-      <button className="text-xl group-focus-within:outline-2 outline-black dark:outline-gray-100 rounded-md p-0.5 group-focus-within:outline">
+      <button className="rounded-md p-0.5 text-xl outline-black group-focus-within:outline group-focus-within:outline-2 dark:outline-gray-100">
         <IoLanguage title={t('language')} />
       </button>
-      <div className="absolute w-[110px] right-0 divide-y-2 divide-black dark:divide-gray-100 z-10 hidden group-focus-within:flex border-2 border-black dark:border-gray-100 rounded-md bg-white dark:bg-gray-800 group-focus-within:flex-col overflow-hidden">
+      <div className="absolute right-0 z-10 hidden w-[110px] divide-y-2 divide-black overflow-hidden rounded-md border-2 border-black bg-white group-focus-within:flex group-focus-within:flex-col dark:divide-gray-100 dark:border-gray-100 dark:bg-gray-800">
         {Object.keys(languages).map((languageCode) => (
           <button
             onClick={() => {
